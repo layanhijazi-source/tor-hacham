@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="he"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary":"#6f5577","secondary-fixed":"#f9d8ff","secondary-container":"#f6d5fd","surface-container-high":"#e9e8e5","secondary-fixed-dim":"#dcbce3","inverse-primary":"#ffb2b7","primary-container":"#d9777f","on-background":"#1a1c1a","on-primary-fixed-variant":"#7a2c36","on-tertiary-fixed":"#002117","on-secondary-fixed-variant":"#563e5e","surface-container-lowest":"#ffffff","inverse-surface":"#2f312f","on-primary-fixed":"#40010e","surface-container-highest":"#e3e2e0","tertiary-container":"#5ca187","primary-fixed":"#ffdadb","on-primary":"#ffffff","on-surface":"#1a1c1a","on-secondary-fixed":"#281331","on-error":"#ffffff","primary":"#98434c","surface":"#faf9f6","on-tertiary-fixed-variant":"#00513d","inverse-on-surface":"#f2f1ee","on-tertiary":"#ffffff","on-secondary":"#ffffff","on-secondary-container":"#74597c","on-error-container":"#93000a","error":"#ba1a1a","outline-variant":"#dac1c1","tertiary-fixed":"#aaf1d4","surface-dim":"#dbdad7","surface-tint":"#98434c","outline":"#877273","surface-variant":"#e3e2e0","on-surface-variant":"#544243","surface-bright":"#faf9f6","tertiary-fixed-dim":"#8ed5b9","background":"#faf9f6","surface-container":"#efeeeb","error-container":"#ffdad6","primary-fixed-dim":"#ffb2b7","surface-container-low":"#f4f3f1","tertiary":"#216a53","on-tertiary-container":"#003426","on-primary-container":"#57121d"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-sm":"0.5rem","margin-mobile":"1rem","space-md":"1rem","gutter":"1.5rem","space-xs":"0.25rem","margin":"2rem","space-xl":"2.5rem","gutter-sm":"1rem","space-lg":"1.5rem"},fontFamily:{"headline-lg":["Rubik"],"body-sm":["Rubik"],"body-md":["Rubik"],"label-lg":["Rubik"],"label-sm":["Rubik"],"headline-lg-mobile":["Rubik"],"headline-xl-mobile":["Rubik"],"body-lg":["Rubik"],"headline-xl":["Rubik"],"label-md":["Rubik"],"headline-sm":["Rubik"],"headline-md":["Rubik"]},fontSize:{"headline-lg":["2rem",{"lineHeight":"2.5rem","fontWeight":"600"}],"body-sm":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"400"}],"body-md":["1rem",{"lineHeight":"1.5rem","fontWeight":"400"}],"label-lg":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"500"}],"label-sm":["0.6875rem",{"lineHeight":"0.875rem","fontWeight":"500"}],"headline-lg-mobile":["1.625rem",{"lineHeight":"2rem","fontWeight":"600"}],"headline-xl-mobile":["2rem",{"lineHeight":"2.5rem","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","fontWeight":"400"}],"headline-xl":["2.5rem",{"lineHeight":"3rem","fontWeight":"600"}],"label-md":["0.75rem",{"lineHeight":"1rem","fontWeight":"500"}],"headline-sm":["1.25rem",{"lineHeight":"1.75rem","fontWeight":"500"}],"headline-md":["1.5rem",{"lineHeight":"2rem","fontWeight":"500"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 inset-x-0 h-16 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="w-full h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-md"><img alt="תור חכם Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKAaVNaodoxnuOECc25GC9n1_rmoSpaVf3FSamCQJdui3OCc0Mgz1-KhZ3IilXZciww1DjcwqCSAYou9WXnQJrDgshiZbKFPbENKtGm-apGox2fxxu8AdEJamoi7ZgTxPuvYZz2sj-rIgNQU-QpJCvBVXe_A_Vufejsk72xFYCFRUUUZJhjeaqwBNhKfgTmP9LG8ndutTxTYyhy0pTHAfHE2KUd_Svuvm7jaI-WIE"/><div class="flex flex-col"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">תור חכם</span><span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">קליניקת גלואו &amp; ביוטי</span></div><span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:inline-block">ניהול תורים וסוכן AI למכוני קוסמטיקה</span></div></div><div class="flex items-center gap-space-lg"><div class="hidden md:flex items-center p-1 rounded-full bg-surface-container-high"><button class="px-3 py-1 rounded-full font-label-md text-label-md bg-surface-container-lowest text-on-surface shadow-[0_1px_4px_rgba(0,0,0,0.06)] flex items-center gap-1.5 transition-all" type="button"><span class="material-symbols-outlined text-[16px] text-primary">storefront</span>מצב מנהלת</button><button class="px-3 py-1 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface flex items-center gap-1.5 transition-all" type="button"><span class="material-symbols-outlined text-[16px] text-tertiary">chat</span>סימולציית לקוחה (WhatsApp)</button></div><div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low"><span class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface">זמין לפניות חריגות</span></div><div class="relative flex items-center"><button aria-label="העברות לטיפול אנושי" class="relative p-2 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 left-1 min-w-[1.125rem] h-[1.125rem] px-1 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center font-bold">3</span></button></div><div class="flex items-center gap-space-sm pe-1"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoF8vaYTzRaGPlh3QOXoqq_nrY0b0MLs_MVlHTbo8IqkzFfBSThDPhl7ATItz97r4ocAIK56yNKXe6L2z3XdGd8A5Skzoo6bz9ucGPcnHOFj9A5HlbACYmkta_6xUdI-8WlG12gWj-553iBmf_Act638K8ksAi9y5Z9azA5UGLHPh37-ksXZc6Z5BZ9831hdLmzEYzVKR2rTt9BGxeGGvFVJdjaStu2DhWPAiymYo"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary border-2 border-surface-container-lowest"></span></div><div class="hidden xl:flex flex-col text-right"><span class="font-label-md text-label-md font-semibold text-on-surface">מורן כהן</span><span class="font-label-sm text-label-sm text-on-surface-variant">מנהלת ראשית</span></div></div></div></div></header><div class="flex w-full"><aside class="fixed right-0 top-16 bottom-0 w-72 bg-surface-container-low z-40 flex flex-col justify-between py-space-md"><div class="flex flex-col gap-space-md px-space-md"><div class="px-3 py-2 rounded-xl bg-surface-container flex items-center justify-between"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary text-[20px]">neurology</span><span class="font-label-md text-label-md font-semibold text-on-surface">סוכן AI פעיל</span></div><span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">זמן אמת</span></div><nav class="flex flex-col gap-1.5" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-xl"><a class="flex items-center gap-3 px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="dashboard-and-calendar" href="#"><span class="material-symbols-outlined text-[20px]">calendar_month</span>דשבורד וניהול יומן</a><a class="flex items-center gap-3 px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="whatsapp-simulation-agent-chat" href="#"><span class="material-symbols-outlined text-[20px]">chat_bubble</span>סימולציית WhatsApp &amp; שיחות סוכן</a><a aria-current="page" class="flex items-center gap-3 px-3.5 py-3 transition-all bg-primary-container text-on-primary-container font-semibold rounded-xl" data-path="waitlist-and-cancellations" href="#"><span class="material-symbols-outlined text-[20px]">hourglass_top</span>רשימת המתנה וביטולים</a><a class="flex items-center gap-3 px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="human-handover-requests" href="#"><span class="material-symbols-outlined text-[20px]">support_agent</span>פניות להעברה אנושית</a><a class="flex items-center gap-3 px-3.5 py-3 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-label-lg text-label-lg" data-path="service-catalog-and-settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span>קטלוג שירותים והגדרות</a></nav></div><div class="px-space-md pt-space-sm"><div class="p-3.5 rounded-xl bg-surface-container-lowest shadow-[0_2px_12px_rgba(61,38,69,0.04)] flex flex-col gap-2"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm font-semibold text-on-surface-variant">דיוק תיאומים אוטומטי</span><span class="font-label-sm text-label-sm font-bold text-tertiary">98.4%</span></div><div class="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden"><div class="h-full w-[98.4%] rounded-full bg-tertiary-container"></div></div><span class="font-label-sm text-label-sm text-on-surface-variant text-right">42 תורים נסגרו ללא מגע יד אדם השבוע</span></div></div></aside><div class="w-full pr-72"><main class="w-full pt-16 px-gutter bg-surface min-h-[calc(100vh-4rem)]"><div class="flex flex-col w-full gap-space-xl pb-16">
+<!-- Header Bar & Overview Strip -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold inline-flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+          מנוע חכם פעיל 24/7
+        </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">סנכרון תורים אחרון לפני 34 שניות</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">ניהול רשימת המתנה ומילוי ביטולים אוטומטי</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        מערכת מבוססת AI לסגירה מיידית של חלונות זמן שהתפנו בקליניקה, שמירה על הכנסות רציפות ופנייה אוטונומית לפי תעדוף הלקוחות.
+      </p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="px-4 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-lg text-label-lg flex items-center gap-2 transition-all" id="quickSettingsBtn">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">settings_suggest</span>
+        הגדרות חוקי מנוע
+      </button>
+<button class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:opacity-90 active:scale-95 shadow-md font-label-lg text-label-lg font-semibold flex items-center gap-2 transition-all" id="openAddModalBtn">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+        הוספת לקוחה ידנית לרשימה
+      </button>
+</div>
+</div>
+<!-- SECTION 1: Top Feature - "מנוע מילוי תורים אוטומטי" Live Dispatch Box -->
+<section class="relative overflow-hidden rounded-2xl bg-surface-container-lowest shadow-[0_12px_36px_-6px_rgba(61,38,69,0.07)] p-6 lg:p-8">
+<div class="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-tertiary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="flex flex-col gap-6 relative z-10">
+<!-- Top banner of the engine -->
+<div class="flex flex-col md:flex-row md:items-center justify-between pb-5 bg-surface-container-low/60 -mx-6 -mt-6 lg:-mx-8 lg:-mt-8 px-6 lg:px-8 pt-6 rounded-t-2xl gap-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed text-on-primary-fixed flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[26px]">autorenew</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">אירוע ביטול חי: תור התפנה במערכת</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">ביטול טרי</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">הסוכן זיהה ביטול עצמי ב-WhatsApp ויזם הצעה מיידית לממתינה הראשונה בתור</p>
+</div>
+</div>
+<!-- System Rule Tags (Spec-driven) -->
+<div class="flex items-center flex-wrap gap-2">
+<div class="px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary">timer</span>
+<span class="font-label-sm text-label-sm font-medium">הצעה מוגבלת ל-30 דקות</span>
+</div>
+<div class="px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary">sort</span>
+<span class="font-label-sm text-label-sm font-medium">פנייה לפי סדר הצטרפות מדויק</span>
+</div>
+<div class="px-3 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span>
+<span class="font-label-sm text-label-sm font-medium">מניעת חפיפות מוחלטת</span>
+</div>
+</div>
+</div>
+<!-- Main Slot Details Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<!-- Slot Specifications Card -->
+<div class="lg:col-span-5 flex flex-col justify-between p-6 rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">פרטי החלון שהתפנה</span>
+<span class="font-label-md text-label-md px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-semibold">חדר טיפולים 2</span>
+</div>
+<div class="flex items-baseline gap-3">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">יום ד', 15:00</span>
+<span class="font-body-md text-body-md text-on-surface-variant font-medium">(25 באוקטובר)</span>
+</div>
+<div class="grid grid-cols-2 gap-3 pt-2">
+<div class="p-3 rounded-lg bg-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">סוג הטיפול</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-[18px] text-primary">spa</span>
+                  טיפול פנים קלאסי
+                </span>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-lowest">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">משך הטיפול</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">schedule</span>
+                  60 דקות (עד 16:00)
+                </span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-primary-fixed/30 text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+<span class="font-label-md text-label-md font-medium">ערך מוגן למניעת אובדן:</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-primary">380 ₪</span>
+</div>
+</div>
+<div class="pt-4 flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+            מטפלת מוקצית: ענת שחם (מומחית טיפולי פנים ואנטי-אייג'ינג)
+          </div>
+</div>
+<!-- Candidate & Countdown Dispatch Card -->
+<div class="lg:col-span-7 flex flex-col justify-between p-6 rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">סטטוס מילוי: הצעה פעילה ב-WhatsApp</span>
+</div>
+<!-- Glowing Live Timer Badge -->
+<div class="px-3.5 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md font-bold flex items-center gap-1.5 self-start sm:self-auto">
+<span class="material-symbols-outlined text-[18px] animate-spin text-secondary">hourglass_bottom</span>
+<span>נותרו <span id="countdownTimer">18:42</span> דקות לפקיעת הצעה</span>
+</div>
+</div>
+<!-- Current Targeted Client Profile Card -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest text-primary font-bold flex items-center justify-center shadow-sm">
+<span class="font-headline-sm text-headline-sm">מ</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">מיכל אברהם</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">מקום 1 בהמתנה</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">העדפה תואמת: ימי רביעי/חמישי שעות אחה"צ</span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-auto">
+<span class="px-2.5 py-1 rounded-md bg-surface-container-lowest font-label-sm text-label-sm font-medium text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">send</span> נשלח ב-14:32
+                </span>
+<a class="p-2 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" href="#" title="צפייה בשיחה">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</a>
+</div>
+</div>
+<!-- WhatsApp Message Preview Bubble -->
+<div class="p-3.5 rounded-xl bg-tertiary/10 text-on-surface flex items-start gap-2.5">
+<span class="material-symbols-outlined text-tertiary text-[20px] mt-0.5">forum</span>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-surface">
+<strong class="font-medium text-tertiary">הסוכן שיגר:</strong> "היי מיכל ✨ התפנה תור מוקדם לטיפול פנים ביום רביעי הקרוב ב-15:00 עם ענת. מכיוון שאת ראשונה ברשימת ההמתנה, המועד שמור עבורך ל-30 הדקות הקרובות. לאישור הגיבי '1' או 'כן'."
+              </p>
+</div>
+</div>
+<!-- Controls / Action Strip (Spec-driven) -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-5 mt-4 bg-surface-container-low/40 -mx-6 -mb-6 p-4 rounded-b-xl">
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-md text-label-md font-semibold flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">skip_next</span>
+                שליחה ידנית למועמדת הבאה
+              </button>
+<button class="px-3.5 py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-md text-label-md font-medium flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">public</span>
+                שחרור מועד להזמנה חופשית
+              </button>
+</div>
+<button class="px-3 py-2 rounded-lg text-error hover:bg-error-container/40 font-label-md text-label-md font-medium flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+              ביטול הצעה
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Active Waitlist Table / Board -->
+<section class="flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">לקוחות ברשימת המתנה פעילה</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">דירוג עדיפות מבוסס זמן רישום, זמינות מוצהרת והתאמה למשך הטיפול</p>
+</div>
+<!-- Quick filters -->
+<div class="flex items-center gap-2">
+<div class="flex items-center bg-surface-container-low p-1 rounded-xl">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold shadow-sm">הכל (14)</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium">טיפולי פנים (6)</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium">ציפורניים וגבות (8)</button>
+</div>
+<button class="p-2 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant" title="סינון מתקדם">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="w-full overflow-hidden rounded-2xl bg-surface-container-lowest shadow-[0_4px_24px_rgba(61,38,69,0.04)]">
+<div class="overflow-x-auto">
+<table class="w-full text-right text-on-surface">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3.5 px-4 font-semibold text-center w-16" scope="col">עדיפות</th>
+<th class="py-3.5 px-4 font-semibold" scope="col">שם לקוחה</th>
+<th class="py-3.5 px-4 font-semibold" scope="col">שירות מבוקש</th>
+<th class="py-3.5 px-4 font-semibold" scope="col">העדפת ימים ושעות</th>
+<th class="py-3.5 px-4 font-semibold" scope="col">תאריך הצטרפות</th>
+<th class="py-3.5 px-4 font-semibold" scope="col">סטטוס פעיל</th>
+<th class="py-3.5 px-4 font-semibold text-left" scope="col">פעולות</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent font-body-sm text-body-sm">
+<!-- Row 1: Michal Avraham -->
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-surface-container-low/20">
+<td class="py-4 px-4 text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-on-primary font-label-md text-label-md font-bold shadow-sm">
+                  #1
+                </span>
+</td>
+<td class="py-4 px-4 font-medium">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed font-bold flex items-center justify-center text-sm">
+                    מ
+                  </div>
+<div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface block">מיכל אברהם</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">054-8291034</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2.5 py-1 rounded-md bg-surface-container font-label-md text-label-md font-medium text-on-surface inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">spa</span>
+                  טיפול פנים זוהר
+                </span>
+</td>
+<td class="py-4 px-4 font-medium text-on-surface">
+                אחה"צ (רביעי/חמישי)
+              </td>
+<td class="py-4 px-4 text-on-surface-variant font-label-md text-label-md">
+                22/10 10:15
+              </td>
+<td class="py-4 px-4">
+<!-- Flashing orange/terracotta badge as required by spec -->
+<span class="px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-label-md font-bold inline-flex items-center gap-1.5 animate-pulse shadow-sm">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                  הצעה נשלחה (ממתין לאישור, 18 דק' נותרו)
+                </span>
+</td>
+<td class="py-4 px-4 text-left">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="הצג היסטוריית תקשורת">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="הקפצת עדיפות">
+<span class="material-symbols-outlined text-[18px]">north</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-error-container/40 text-on-surface-variant hover:text-error transition-colors" title="הסרה מרשימה">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Nofar Sasson -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-4 text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-secondary text-on-secondary font-label-md text-label-md font-bold">
+                  #2
+                </span>
+</td>
+<td class="py-4 px-4 font-medium">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold flex items-center justify-center text-sm">
+                    נ
+                  </div>
+<div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface block">נופר ששון</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">052-4112903</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2.5 py-1 rounded-md bg-surface-container font-label-md text-label-md font-medium text-on-surface inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">spa</span>
+                  טיפול פנים
+                </span>
+</td>
+<td class="py-4 px-4 font-medium text-on-surface">
+                רביעי מ-14:00
+              </td>
+<td class="py-4 px-4 text-on-surface-variant font-label-md text-label-md">
+                22/10 11:40
+              </td>
+<td class="py-4 px-4">
+<!-- Blue/Secondary badge: Next in line -->
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md font-semibold inline-flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                  במקום הבא בתור
+                </span>
+</td>
+<td class="py-4 px-4 text-left">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="הצג היסטוריית תקשורת">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="הקפצת עדיפות">
+<span class="material-symbols-outlined text-[18px]">north</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-error-container/40 text-on-surface-variant hover:text-error transition-colors" title="הסרה מרשימה">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Tal Goldstein -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-4 text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold">
+                  #3
+                </span>
+</td>
+<td class="py-4 px-4 font-medium">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant font-bold flex items-center justify-center text-sm">
+                    ט
+                  </div>
+<div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface block">טל גולדשטיין</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">050-7734192</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2.5 py-1 rounded-md bg-surface-container font-label-md text-label-md font-medium text-on-surface inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">brush</span>
+                  מניקור ג'ל
+                </span>
+</td>
+<td class="py-4 px-4 font-medium text-on-surface">
+                שישי בוקר בלבד
+              </td>
+<td class="py-4 px-4 text-on-surface-variant font-label-md text-label-md">
+                23/10 09:20
+              </td>
+<td class="py-4 px-4">
+<!-- Gray badge: waiting for matching slot -->
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md font-medium inline-flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  ממתינה למועד מתאים
+                </span>
+</td>
+<td class="py-4 px-4 text-left">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="הצג היסטוריית תקשורת">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="הקפצת עדיפות">
+<span class="material-symbols-outlined text-[18px]">north</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-error-container/40 text-on-surface-variant hover:text-error transition-colors" title="הסרה מרשימה">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Hila Levin -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-4 text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold">
+                  #4
+                </span>
+</td>
+<td class="py-4 px-4 font-medium">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant font-bold flex items-center justify-center text-sm">
+                    ה
+                  </div>
+<div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface block">הילה לוין</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">053-9182345</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2.5 py-1 rounded-md bg-surface-container font-label-md text-label-md font-medium text-on-surface inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">face</span>
+                  עיצוב גבות
+                </span>
+</td>
+<td class="py-4 px-4 font-medium text-on-surface">
+                כל יום אחרי 16:00
+              </td>
+<td class="py-4 px-4 text-on-surface-variant font-label-md text-label-md">
+                23/10 14:05
+              </td>
+<td class="py-4 px-4">
+<!-- Gray badge: waiting for matching slot -->
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md font-medium inline-flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                  ממתינה למועד מתאים
+                </span>
+</td>
+<td class="py-4 px-4 text-left">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="הצג היסטוריית תקשורת">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="הקפצת עדיפות">
+<span class="material-symbols-outlined text-[18px]">north</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-error-container/40 text-on-surface-variant hover:text-error transition-colors" title="הסרה מרשימה">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Bottom Footer Summary -->
+<div class="px-6 py-4 bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-on-surface-variant">
+<span class="font-label-md text-label-md">מציג 4 מתוך 14 לקוחות ברשימה הפעילה</span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold shadow-sm hover:bg-surface-container-high transition-colors">
+            הצגת כל 14 הממתינות
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Performance & Event Log - "היסטוריית מילוי תורים וביטולים השבוע" -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Stat Card: 50% Recovery Fulfillment Rate -->
+<div class="lg:col-span-4 p-6 rounded-2xl bg-surface-container-lowest shadow-[0_4px_24px_rgba(61,38,69,0.04)] flex flex-col justify-between gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">סטטיסטיקת מילוי השבוע</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">עומד ביעד האפיון!</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">יחס ביטולים מול תורים שניצלו ונחסכו על ידי המנוע</p>
+</div>
+<!-- Circular Radial Metric & Numbers -->
+<div class="flex items-center justify-center p-4 bg-surface-container-low rounded-xl gap-6">
+<div class="relative w-28 h-28 flex items-center justify-center">
+<!-- SVG Progress Circle -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-tertiary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="50, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface leading-none">50%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">שיעור מילוי</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">ביטולים שהתרחשו</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">6 ביטולים</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">מולאו בהצלחה</span>
+<span class="font-label-lg text-label-lg font-bold text-tertiary">3 תורים מולאו</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Financial Saving summary -->
+<div class="p-4 rounded-xl bg-tertiary/10 flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-tertiary text-[24px]">savings</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">סך הכנסה שנשמרה השבוע</span>
+<span class="font-headline-sm text-headline-sm font-bold text-tertiary">860 ₪</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary/40 text-[32px]">trending_up</span>
+</div>
+</div>
+<!-- Event History Timeline Log -->
+<div class="lg:col-span-8 p-6 rounded-2xl bg-surface-container-lowest shadow-[0_4px_24px_rgba(61,38,69,0.04)] flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">יומן אירועים אחרונים - השבוע</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">תיעוד אוטונומי של תנועות הביטול, פקיעת הצעות וההשלמה המהירה</p>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">sync</span> עדכון בזמן אמת
+        </span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Event Log Item 1 (Spec: Tuesday 11:00 manicure canceled -> Lior Katz -> accepted in 8 min -> 140 saved) -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">מילוי תור הצליח: יום שלישי 11:00</span>
+<span class="px-2 py-0.2 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">אושר תוך 8 דק'</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                התור (מניקור) התבטל ← הוצע ל<strong>ליאור כץ</strong> ← אושר תוך 8 דקות ← נסגר ללא אובדן הכנסה.
+              </p>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between shrink-0">
+<span class="font-label-lg text-label-lg font-bold text-tertiary">+140 ₪ נשמרו</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">אתמול, 16:45</span>
+</div>
+</div>
+<!-- Event Log Item 2 (Spec: Monday 16:00 -> expired 30 min -> moved to candidate 2 -> confirmed) -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">forward</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">פקיעת הצעה והעברה למועמדת 2</span>
+<span class="px-2 py-0.2 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">העברה אוטומטית</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                תור של יום שני 16:00 ← פקע לאחר 30 דקות ללא מענה ממועמדת 1 ← הועבר אוטומטית למועמדת 2 ואושר.
+              </p>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between shrink-0">
+<span class="font-label-lg text-label-lg font-bold text-tertiary">+340 ₪ נשמרו</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">שלשום, 14:10</span>
+</div>
+</div>
+<!-- Event Log Item 3: Auto-Cancellation detected -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">event_busy</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">זיהוי ביטול עצמי ב-WhatsApp</span>
+<span class="px-2 py-0.2 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-medium">ביטול רגיל</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                הלקוחה שירן אזולאי ביטלה תור לעיצוב גבות ליום ראשון 12:30 עקב מחלה. החלון הועבר לחיפוש ממתינות.
+              </p>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between shrink-0">
+<span class="font-label-md text-label-md font-medium text-on-surface-variant">המתנה למועמדת</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">21/10 18:02</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Add Client to Waitlist Modal (Interactive Backdrop Component) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm hidden p-4" id="addModal">
+<div class="w-full max-w-lg bg-surface-container-lowest rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+<div class="p-6 bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">person_add</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">הוספת לקוחה לרשימת המתנה</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">הסוכן יפנה אליה ברגע שיתפנה מועד מתאים</p>
+</div>
+</div>
+<button class="p-2 rounded-full text-on-surface-variant hover:bg-surface-container transition-colors" id="closeAddModalBtn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="p-6 flex flex-col gap-4" id="waitlistForm">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">שם מלא של הלקוחה</label>
+<input class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 outline-none focus:ring-2 focus:ring-primary font-body-md text-body-md" placeholder="למשל: דנה כהן" required="" type="text"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">מספר טלפון (WhatsApp)</label>
+<input class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 outline-none focus:ring-2 focus:ring-primary font-body-md text-body-md" dir="ltr" placeholder="050-0000000" required="" type="tel"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">שירות מבוקש</label>
+<select class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface outline-none focus:ring-2 focus:ring-primary font-body-md text-body-md">
+<option value="facial">טיפול פנים קלאסי / זוהר (60 דק')</option>
+<option value="nails">מניקור ג'ל (45 דק')</option>
+<option value="brows">עיצוב והרמת גבות (30 דק')</option>
+<option value="laser">הסרת שיער / טיפול מיוחד (60 דק')</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">העדפת מועדים ושעות</label>
+<input class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 outline-none focus:ring-2 focus:ring-primary font-body-md text-body-md" placeholder="למשל: ימי רביעי/חמישי אחרי 16:00, או שישי בוקר" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">הערות נוספות לסוכן</label>
+<textarea class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 outline-none focus:ring-2 focus:ring-primary font-body-md text-body-md resize-none" placeholder="גמישה בהתראה של שעה מראש / מעדיפה את ענת בלבד..." rows="2"></textarea>
+</div>
+<div class="flex items-center justify-end gap-3 pt-3">
+<button class="px-4 py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container font-label-lg text-label-lg font-medium transition-colors" id="cancelModalBtn" type="button">
+            ביטול
+          </button>
+<button class="px-5 py-2.5 rounded-xl bg-primary text-on-primary hover:opacity-90 font-label-lg text-label-lg font-bold shadow-md transition-all" type="submit">
+            הוספה לרשימת המתנה
+          </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script>
+  // Countdown simulation for active offer (18:42 countdown)
+  let totalSeconds = 18 * 60 + 42;
+  const countdownEl = document.getElementById('countdownTimer');
+
+  function updateTimer() {
+    if (!countdownEl) return;
+    if (totalSeconds <= 0) {
+      countdownEl.innerText = '00:00';
+      return;
+    }
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    countdownEl.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    totalSeconds--;
+  }
+  setInterval(updateTimer, 1000);
+
+  // Modal show / hide interactions
+  const openModalBtn = document.getElementById('openAddModalBtn');
+  const closeModalBtn = document.getElementById('closeAddModalBtn');
+  const cancelModalBtn = document.getElementById('cancelModalBtn');
+  const addModal = document.getElementById('addModal');
+  const waitlistForm = document.getElementById('waitlistForm');
+
+  function toggleModal(show) {
+    if (!addModal) return;
+    if (show) {
+      addModal.classList.remove('hidden');
+    } else {
+      addModal.classList.add('hidden');
+    }
+  }
+
+  if (openModalBtn) openModalBtn.addEventListener('click', () => toggleModal(true));
+  if (closeModalBtn) closeModalBtn.addEventListener('click', () => toggleModal(false));
+  if (cancelModalBtn) cancelModalBtn.addEventListener('click', () => toggleModal(false));
+
+  if (waitlistForm) {
+    waitlistForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      toggleModal(false);
+      alert('הלקוחה נוספה בהצלחה לרשימת ההמתנה ומנוע ה-AI יסרוק עבורה מועדים תואמים!');
+    });
+  }
+</script></main></div></div></body></html>

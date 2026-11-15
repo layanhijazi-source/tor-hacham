@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="he"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            // Luxury Theme: Creme, Sand, Dusty Pink & Deep Burgundy (#5B1E31)
+            "burgundy-deep": "#5B1E31",
+            "burgundy-hover": "#4a1525",
+            "burgundy-subtle": "#f7eaee",
+            "dusty-pink": "#E8B4B8",
+            "dusty-pink-light": "#F7E6E8",
+            "dusty-pink-dark": "#8C4A5A",
+            "sand-border": "#E5DCD3",
+            "sand-border-dark": "#D6C7BB",
+            "creme-surface": "#FDFBF7",
+            "creme-subtle": "#F6F2EC",
+            "creme-card": "#FFFFFF",
+            "warm-charcoal": "#231F20",
+            "warm-muted": "#6E6562",
+
+            // Semantic mappings
+            "surface": "#FDFBF7",
+            "background": "#FDFBF7",
+            "surface-container": "#F6F2EC",
+            "surface-container-low": "#FAF7F2",
+            "surface-container-lowest": "#FFFFFF",
+            "primary": "#5B1E31",
+            "primary-container": "#5B1E31",
+            "on-primary": "#FFFFFF",
+            "secondary": "#E8B4B8",
+            "secondary-container": "#F7E6E8",
+            "on-surface": "#231F20",
+            "on-surface-variant": "#6E6562",
+            "outline": "#E5DCD3",
+            "outline-variant": "#D6C7BB"
+          },
+          fontFamily: {
+            sans: ["Rubik", "sans-serif"],
+            body: ["Rubik", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#FDFBF7] font-sans text-warm-charcoal antialiased selection:bg-dusty-pink selection:text-burgundy-deep">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 inset-x-0 h-16 z-50 bg-[#FDFBF7]/95 backdrop-blur-md border-b border-sand-border shadow-[0_2px_12px_rgba(91,30,49,0.03)]">
+<div class="w-full h-16 px-6 lg:px-8 flex items-center justify-between">
+<!-- Brand & Facility Details -->
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-2xl bg-burgundy-deep text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]">calendar_month</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-bold text-lg text-burgundy-deep tracking-tight">תור חכם</span>
+<span class="px-2.5 py-0.5 rounded-full bg-dusty-pink-light border border-dusty-pink text-burgundy-deep text-xs font-semibold">
+              קליניקת גלואו &amp; ביוטי
+            </span>
+</div>
+<span class="text-xs text-warm-muted hidden sm:inline-block">ניהול תורים וסוכן AI למכוני קוסמטיקה</span>
+</div>
+</div>
+<!-- Action Toggles & User -->
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center p-1 rounded-full bg-creme-subtle border border-sand-border">
+<button class="px-3.5 py-1 rounded-full text-xs font-semibold bg-white text-burgundy-deep shadow-sm flex items-center gap-1.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[15px] text-burgundy-deep">storefront</span>
+            מצב מנהלת
+          </button>
+<button class="px-3.5 py-1 rounded-full text-xs font-medium text-warm-muted hover:text-burgundy-deep flex items-center gap-1.5 transition-all" type="button">
+<span class="material-symbols-outlined text-[15px] text-dusty-pink-dark">chat</span>
+            סימולציית לקוחה (WhatsApp)
+          </button>
+</div>
+<!-- AI Engine Status Pill -->
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-dusty-pink-light border border-dusty-pink text-burgundy-deep">
+<span class="w-2 h-2 rounded-full bg-burgundy-deep animate-pulse"></span>
+<span class="text-xs font-medium">זמין לפניות חריגות</span>
+</div>
+<!-- Handover Notifications Counter -->
+<div class="relative flex items-center">
+<button aria-label="העברות לטיפול אנושי" class="relative p-2 rounded-full text-warm-muted hover:bg-creme-subtle hover:text-burgundy-deep transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1 left-1 min-w-[1.125rem] h-[1.125rem] px-1 rounded-full bg-burgundy-deep border border-white text-white text-[10px] flex items-center justify-center font-bold">3</span>
+</button>
+</div>
+<!-- User Profile -->
+<div class="flex items-center gap-3 pe-1 border-r border-sand-border pr-3">
+<div class="relative">
+<div class="w-9 h-9 rounded-full bg-burgundy-deep flex items-center justify-center font-bold text-white text-sm ring-2 ring-creme-subtle shadow-sm">
+              מכ
+            </div>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-dusty-pink border-2 border-white"></span>
+</div>
+<div class="hidden xl:flex flex-col text-right">
+<span class="text-xs font-bold text-burgundy-deep">מורן כהן</span>
+<span class="text-[11px] text-warm-muted">מנהלת ראשית</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex w-full">
+<!-- Right Sidebar Navigation (RTL layout) -->
+<aside class="fixed right-0 top-16 bottom-0 w-72 bg-creme-subtle/90 backdrop-blur-sm border-l border-sand-border z-40 flex flex-col justify-between py-4">
+<div class="flex flex-col gap-4 px-4">
+<!-- Live Agent Badge -->
+<div class="px-3.5 py-2.5 rounded-2xl bg-white border border-sand-border flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-burgundy-deep text-[20px]">neurology</span>
+<span class="text-xs font-bold text-burgundy-deep">סוכן AI פעיל</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-dusty-pink-light border border-dusty-pink text-burgundy-deep text-[11px] font-bold">זמן אמת</span>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-1.5">
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-warm-muted hover:bg-white hover:text-burgundy-deep transition-all text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+            דשבורד וניהול יומן
+          </a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-warm-muted hover:bg-white hover:text-burgundy-deep transition-all text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+            סימולציית WhatsApp &amp; שיחות סוכן
+          </a>
+<!-- Active Page Highlight with Burgundy Deep -->
+<a aria-current="page" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-burgundy-deep text-white font-bold shadow-sm transition-all" href="#">
+<span class="material-symbols-outlined text-[20px] text-dusty-pink">hourglass_top</span>
+            רשימת המתנה וביטולים
+          </a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-warm-muted hover:bg-white hover:text-burgundy-deep transition-all text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">support_agent</span>
+            פניות להעברה אנושית
+          </a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-warm-muted hover:bg-white hover:text-burgundy-deep transition-all text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+            קטלוג שירותים והגדרות
+          </a>
+</nav>
+</div>
+<!-- Autonomous Performance Widget -->
+<div class="px-4 pt-2">
+<div class="p-4 rounded-2xl bg-white border border-sand-border shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-warm-muted">דיוק תיאומים אוטומטי</span>
+<span class="text-xs font-bold text-burgundy-deep bg-dusty-pink-light px-2 py-0.5 rounded-full border border-dusty-pink">98.4%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-creme-subtle overflow-hidden">
+<div class="h-full w-[98.4%] rounded-full bg-burgundy-deep"></div>
+</div>
+<span class="text-[11px] text-warm-muted text-right">42 תורים נסגרו ללא מגע יד אדם השבוע</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<div class="w-full pr-72">
+<main class="w-full pt-16 px-6 lg:px-10 bg-[#FDFBF7] min-h-[calc(100vh-4rem)]">
+<div class="flex flex-col w-full gap-8 py-8 pb-20">
+<!-- Header Strip & Top CTAs with subtle Luxury Clinic Ambience Card -->
+<div class="relative overflow-hidden rounded-3xl bg-creme-subtle border border-sand-border p-6 lg:p-7 shadow-[0_4px_20px_rgba(91,30,49,0.03)]">
+<div class="absolute inset-y-0 left-0 w-1/3 max-w-sm hidden md:block opacity-20 pointer-events-none mix-blend-multiply overflow-hidden">
+<img alt="קליניקת יוקרה" class="w-full h-full object-cover object-center filter grayscale-[30%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSP5_cYtRPgPq1K_weIWeqgW968WgwAzEUJUPYmq3g-phz6qgr0Wc1x0ULk1MeTt9qKVYDsn_Br138ug7HuQQ-HvK9u3IT1nDHn2TWQZeOSdUHbwsEB60tq8sWUVMmehdWalkxPdk3UdFDYRHDH9K23xaaY988Jet24CbM-A8tAKJNpU1MctOdFrOhnFZcjACme7Fkz-8BgCcQ7z_AcpYH5GVFD5L-DVPHg8c0agI"/>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-creme-subtle/60 to-creme-subtle"></div>
+</div>
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2.5">
+<span class="px-3 py-1 rounded-full bg-dusty-pink-light border border-dusty-pink text-burgundy-deep text-xs font-bold inline-flex items-center gap-1.5 shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-burgundy-deep animate-ping"></span>
+                  מנוע חכם פעיל 24/7
+                </span>
+<span class="text-xs text-warm-muted font-medium">סנכרון תורים אחרון לפני 34 שניות</span>
+</div>
+<h1 class="text-2xl lg:text-3xl font-bold text-burgundy-deep tracking-tight">ניהול רשימת המתנה ומילוי ביטולים אוטומטי</h1>
+<p class="text-sm text-warm-muted max-w-2xl leading-relaxed">
+                מערכת מבוססת AI לסגירה מיידית של חלונות זמן שהתפנו בקליניקה, שמירה על הכנסות רציפות ופנייה אוטונומית לפי תעדוף הלקוחות.
+              </p>
+</div>
+<div class="flex items-center gap-3 flex-wrap">
+<button class="px-4 py-2.5 rounded-xl bg-white hover:bg-creme-subtle text-warm-charcoal font-semibold text-sm flex items-center gap-2 border border-sand-border transition-all shadow-xs" id="quickSettingsBtn">
+<span class="material-symbols-outlined text-[18px] text-warm-muted">settings_suggest</span>
+                הגדרות חוקי מנוע
+              </button>
+<!-- Primary CTA in Deep Burgundy (#5B1E31) -->
+<button class="px-5 py-2.5 rounded-xl bg-burgundy-deep text-white hover:bg-burgundy-hover active:scale-95 shadow-sm font-bold text-sm flex items-center gap-2 transition-all" id="openAddModalBtn">
+<span class="material-symbols-outlined text-[20px] text-dusty-pink">person_add</span>
+                הוספת לקוחה ידנית לרשימה
+              </button>
+</div>
+</div>
+</div>
+<!-- SECTION 1: Top Feature - "מנוע מילוי תורים אוטומטי" Live Dispatch Box -->
+<section class="relative overflow-hidden rounded-2xl bg-white border border-sand-border shadow-[0_8px_30px_rgba(91,30,49,0.03)] p-6 lg:p-8">
+<div class="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-dusty-pink/15 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-burgundy-deep/5 blur-3xl pointer-events-none"></div>
+<div class="flex flex-col gap-6 relative z-10">
+<!-- Top Banner of the Engine -->
+<div class="flex flex-col md:flex-row md:items-center justify-between pb-5 bg-creme-subtle/80 -mx-6 -mt-6 lg:-mx-8 lg:-mt-8 px-6 lg:px-8 pt-6 rounded-t-2xl gap-4 border-b border-sand-border">
+<div class="flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-2xl bg-burgundy-deep text-white flex items-center justify-center shadow-sm font-bold">
+<span class="material-symbols-outlined text-[26px] text-dusty-pink">autorenew</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5">
+<span class="text-lg font-bold text-burgundy-deep">אירוע ביטול חי: תור התפנה במערכת</span>
+<span class="px-2.5 py-0.5 rounded-full bg-dusty-pink text-burgundy-deep text-xs font-bold border border-dusty-pink-dark/20">ביטול טרי</span>
+</div>
+<p class="text-xs text-warm-muted mt-0.5">הסוכן זיהה ביטול עצמי ב-WhatsApp ויזם הצעה מיידית לממתינה הראשונה בתור</p>
+</div>
+</div>
+<!-- System Rule Tags -->
+<div class="flex items-center flex-wrap gap-2">
+<div class="px-3 py-1.5 rounded-xl bg-white shadow-xs border border-sand-border flex items-center gap-1.5 text-warm-charcoal">
+<span class="material-symbols-outlined text-[16px] text-burgundy-deep">timer</span>
+<span class="text-xs font-medium">הצעה מוגבלת ל-30 דקות</span>
+</div>
+<div class="px-3 py-1.5 rounded-xl bg-white shadow-xs border border-sand-border flex items-center gap-1.5 text-warm-charcoal">
+<span class="material-symbols-outlined text-[16px] text-burgundy-deep">sort</span>
+<span class="text-xs font-medium">פנייה לפי סדר הצטרפות מדויק</span>
+</div>
+<div class="px-3 py-1.5 rounded-xl bg-white shadow-xs border border-sand-border flex items-center gap-1.5 text-warm-charcoal">
+<span class="material-symbols-outlined text-[16px] text-burgundy-deep">verified_user</span>
+<span class="text-xs font-medium">מניעת חפיפות מוחלטת</span>
+</div>
+</div>
+</div>
+<!-- Main Slot Details Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<!-- Slot Specifications Card -->
+<div class="lg:col-span-5 flex flex-col justify-between p-6 rounded-2xl bg-creme-subtle border border-sand-border">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="text-xs text-warm-muted uppercase tracking-wider font-bold">פרטי החלון שהתפנה</span>
+<span class="text-xs px-3 py-1 rounded-full bg-white text-burgundy-deep font-bold border border-sand-border">חדר טיפולים 2</span>
+</div>
+<div class="flex items-baseline gap-3">
+<span class="text-3xl font-extrabold text-burgundy-deep">יום ד', 15:00</span>
+<span class="text-sm text-warm-muted font-medium">(25 באוקטובר)</span>
+</div>
+<div class="grid grid-cols-2 gap-3 pt-2">
+<div class="p-3.5 rounded-xl bg-white border border-sand-border/80">
+<span class="text-xs text-warm-muted block">סוג הטיפול</span>
+<span class="text-sm font-bold text-warm-charcoal flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-[18px] text-burgundy-deep">spa</span>
+                          טיפול פנים קלאסי
+                        </span>
+</div>
+<div class="p-3.5 rounded-xl bg-white border border-sand-border/80">
+<span class="text-xs text-warm-muted block">משך הטיפול</span>
+<span class="text-sm font-bold text-warm-charcoal flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-[18px] text-burgundy-deep">schedule</span>
+                          60 דקות (עד 16:00)
+                        </span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-white border border-sand-border text-warm-charcoal">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-burgundy-deep text-[20px]">payments</span>
+<span class="text-xs font-bold text-warm-muted">ערך מוגן למניעת אובדן:</span>
+</div>
+<span class="text-base font-extrabold text-burgundy-deep">380 ₪</span>
+</div>
+</div>
+<div class="pt-4 flex items-center gap-2 text-warm-muted text-xs font-medium">
+<span class="material-symbols-outlined text-[16px] text-burgundy-deep">check_circle</span>
+                    מטפלת מוקצית: ענת שחם (מומחית טיפולי פנים ואנטי-אייג'ינג)
+                  </div>
+</div>
+<!-- Candidate & 30-min Expiration Countdown Dispatch Card -->
+<div class="lg:col-span-7 flex flex-col justify-between p-6 rounded-2xl bg-white border border-sand-border shadow-sm">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-burgundy-deep animate-pulse"></span>
+<span class="text-sm font-bold text-burgundy-deep">סטטוס מילוי: הצעה פעילה ב-WhatsApp</span>
+</div>
+<!-- Expiration Countdown Badge in Dusty Pink -->
+<div class="px-3.5 py-1.5 rounded-full bg-dusty-pink text-burgundy-deep font-bold text-xs flex items-center gap-1.5 border border-dusty-pink-dark/20 shadow-xs">
+<span class="material-symbols-outlined text-[17px] text-burgundy-deep animate-spin">hourglass_bottom</span>
+<span>נותרו <span id="countdownTimer">18:42</span> דקות לפקיעת הצעה</span>
+</div>
+</div>
+<!-- Targeted Client Profile -->
+<div class="p-4 rounded-xl bg-creme-subtle border border-sand-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-full bg-dusty-pink text-burgundy-deep font-extrabold flex items-center justify-center shadow-xs text-lg border border-dusty-pink-dark/20">
+                          מ
+                        </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="text-base font-bold text-burgundy-deep">מיכל אברהם</span>
+<span class="px-2.5 py-0.5 rounded-full bg-dusty-pink text-burgundy-deep text-xs font-bold border border-dusty-pink-dark/20">
+                              מקום 1 בהמתנה
+                            </span>
+</div>
+<span class="text-xs text-warm-muted mt-0.5">העדפה תואמת: ימי רביעי/חמישי שעות אחה"צ</span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-auto">
+<span class="px-3 py-1 rounded-lg bg-white font-medium text-xs text-burgundy-deep border border-sand-border flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[14px]">send</span> נשלח ב-14:32
+                        </span>
+<button class="p-2 rounded-lg bg-white text-warm-muted hover:text-burgundy-deep hover:bg-creme-subtle border border-sand-border transition-colors shadow-xs" title="צפייה בשיחה" type="button">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+</div>
+</div>
+<!-- WhatsApp Preview Bubble with Dusty Pink Accent Theme -->
+<div class="p-4 rounded-xl bg-dusty-pink-light/70 border border-dusty-pink text-warm-charcoal flex items-start gap-3">
+<span class="material-symbols-outlined text-burgundy-deep text-[22px] mt-0.5 shrink-0">forum</span>
+<p class="text-xs leading-relaxed text-warm-charcoal">
+<strong class="font-bold text-burgundy-deep">הסוכן שיגר:</strong> "היי מיכל ✨ התפנה תור מוקדם לטיפול פנים ביום רביעי הקרוב ב-15:00 עם ענת. מכיוון שאת ראשונה ברשימת ההמתנה, המועד שמור עבורך ל-30 הדקות הקרובות. לאישור הגיבי '1' או 'כן'."
+                      </p>
+</div>
+</div>
+<!-- Controls Strip -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-5 mt-4 border-t border-sand-border">
+<div class="flex items-center gap-2">
+<button class="px-4 py-2 rounded-xl bg-burgundy-deep text-white hover:bg-burgundy-hover text-xs font-bold flex items-center gap-1.5 transition-colors shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-dusty-pink">skip_next</span>
+                        שליחה ידנית למועמדת הבאה
+                      </button>
+<button class="px-3.5 py-2 rounded-xl bg-creme-subtle text-warm-charcoal hover:bg-white border border-sand-border text-xs font-medium flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-warm-muted">public</span>
+                        שחרור מועד להזמנה חופשית
+                      </button>
+</div>
+<button class="px-3 py-2 rounded-xl text-warm-muted hover:text-burgundy-deep hover:bg-creme-subtle text-xs font-bold flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+                      ביטול הצעה
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Active Waitlist Table / Board -->
+<section class="flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h2 class="text-lg font-bold text-burgundy-deep">לקוחות ברשימת המתנה פעילה</h2>
+<p class="text-xs text-warm-muted">דירוג עדיפות מבוסס זמן רישום, זמינות מוצהרת והתאמה למשך הטיפול</p>
+</div>
+<!-- Filter tabs -->
+<div class="flex items-center gap-2">
+<div class="flex items-center bg-creme-subtle p-1 rounded-xl border border-sand-border">
+<button class="px-3 py-1.5 rounded-lg bg-burgundy-deep text-white text-xs font-bold shadow-xs">הכל (14)</button>
+<button class="px-3 py-1.5 rounded-lg text-warm-muted hover:text-burgundy-deep text-xs font-medium">טיפולי פנים (6)</button>
+<button class="px-3 py-1.5 rounded-lg text-warm-muted hover:text-burgundy-deep text-xs font-medium">ציפורניים וגבות (8)</button>
+</div>
+<button class="p-2 rounded-xl bg-creme-subtle border border-sand-border hover:bg-white text-burgundy-deep" title="סינון מתקדם">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Table Container with Soft Creme & Sand Borders -->
+<div class="w-full overflow-hidden rounded-2xl bg-white border border-sand-border shadow-[0_4px_24px_rgba(91,30,49,0.03)]">
+<div class="overflow-x-auto">
+<table class="w-full text-right text-warm-charcoal">
+<thead>
+<tr class="bg-creme-subtle text-warm-muted text-xs uppercase tracking-wider border-b border-sand-border">
+<th class="py-3.5 px-4 font-bold text-center w-16" scope="col">עדיפות</th>
+<th class="py-3.5 px-4 font-bold" scope="col">שם לקוחה</th>
+<th class="py-3.5 px-4 font-bold" scope="col">שירות מבוקש</th>
+<th class="py-3.5 px-4 font-bold" scope="col">העדפת ימים ושעות</th>
+<th class="py-3.5 px-4 font-bold" scope="col">תאריך הצטרפות</th>
+<th class="py-3.5 px-4 font-bold" scope="col">סטטוס פעיל</th>
+<th class="py-3.5 px-4 font-bold text-left" scope="col">פעולות</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-sand-border/70 text-xs">
+<!-- Row 1: Michal Avraham -->
+<tr class="bg-dusty-pink-light/40 hover:bg-dusty-pink-light/60 transition-colors">
+<td class="py-4 px-4 text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-dusty-pink text-burgundy-deep font-bold shadow-xs border border-dusty-pink-dark/20">
+                          #1
+                        </span>
+</td>
+<td class="py-4 px-4 font-medium">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-burgundy-deep text-white font-bold flex items-center justify-center text-sm shadow-xs">
+                            מ
+                          </div>
+<div>
+<span class="text-sm font-bold text-burgundy-deep block">מיכל אברהם</span>
+<span class="text-[11px] text-warm-muted">054-8291034</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2.5 py-1 rounded-lg bg-white border border-sand-border font-semibold text-warm-charcoal inline-flex items-center gap-1.5 shadow-xs">
+<span class="material-symbols-outlined text-[15px] text-burgundy-deep">spa</span>
+                          טיפול פנים זוהר
+                        </span>
+</td>
+<td class="py-4 px-4 font-semibold text-warm-charcoal">
+                        אחה"צ (רביעי/חמישי)
+                      </td>
+<td class="py-4 px-4 text-warm-muted font-medium">
+                        22/10 10:15
+                      </td>
+<td class="py-4 px-4">
+<!-- Urgency badge in Dusty Pink -->
+<span class="px-3 py-1 rounded-full bg-dusty-pink text-burgundy-deep font-bold inline-flex items-center gap-1.5 shadow-xs border border-dusty-pink-dark/30 animate-pulse">
+<span class="w-2 h-2 rounded-full bg-burgundy-deep"></span>
+                          הצעה נשלחה (ממתין לאישור, 18 דק' נותרו)
+                        </span>
+</td>
+<td class="py-4 px-4 text-left">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-white text-warm-muted hover:text-burgundy-deep transition-colors" title="הצג היסטוריית תקשורת">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-white text-warm-muted hover:text-burgundy-deep transition-colors" title="הקפצת עדיפות">
+<span class="material-symbols-outlined text-[18px]">north</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-dusty-pink-light text-warm-muted hover:text-burgundy-deep transition-colors" title="הסרה מרשימה">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Nofar Sasson -->
+<tr class="hover:bg-creme-subtle/60 transition-colors">
+<td class="py-4 px-4 text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-creme-subtle text-burgundy-deep font-bold border border-sand-border">
+                          #2
+                        </span>
+</td>
+<td class="py-4 px-4 font-medium">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-dusty-pink-light text-burgundy-deep font-bold flex items-center justify-center text-sm border border-dusty-pink">
+                            נ
+                          </div>
+<div>
+<span class="text-sm font-bold text-burgundy-deep block">נופר ששון</span>
+<span class="text-[11px] text-warm-muted">052-4112903</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2.5 py-1 rounded-lg bg-creme-subtle font-semibold text-warm-charcoal inline-flex items-center gap-1.5 border border-sand-border">
+<span class="material-symbols-outlined text-[15px] text-burgundy-deep">spa</span>
+                          טיפול פנים
+                        </span>
+</td>
+<td class="py-4 px-4 font-semibold text-warm-charcoal">
+                        רביעי מ-14:00
+                      </td>
+<td class="py-4 px-4 text-warm-muted font-medium">
+                        22/10 11:40
+                      </td>
+<td class="py-4 px-4">
+<!-- Next in line status in Dusty Pink Light -->
+<span class="px-3 py-1 rounded-full bg-dusty-pink-light text-burgundy-deep font-bold inline-flex items-center gap-1.5 shadow-xs border border-dusty-pink">
+<span class="w-2 h-2 rounded-full bg-burgundy-deep"></span>
+                          במקום הבא בתור
+                        </span>
+</td>
+<td class="py-4 px-4 text-left">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-creme-subtle text-warm-muted hover:text-burgundy-deep transition-colors" title="הצג היסטוריית תקשורת">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-creme-subtle text-warm-muted hover:text-burgundy-deep transition-colors" title="הקפצת עדיפות">
+<span class="material-symbols-outlined text-[18px]">north</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-dusty-pink-light text-warm-muted hover:text-burgundy-deep transition-colors" title="הסרה מרשימה">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Tal Goldstein -->
+<tr class="bg-creme-subtle/30 hover:bg-creme-subtle/70 transition-colors">
+<td class="py-4 px-4 text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-creme-subtle text-burgundy-deep font-semibold border border-sand-border">
+                          #3
+                        </span>
+</td>
+<td class="py-4 px-4 font-medium">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-white text-warm-muted font-bold flex items-center justify-center text-sm border border-sand-border">
+                            ט
+                          </div>
+<div>
+<span class="text-sm font-bold text-burgundy-deep block">טל גולדשטיין</span>
+<span class="text-[11px] text-warm-muted">050-7734192</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2.5 py-1 rounded-lg bg-white border border-sand-border font-semibold text-warm-charcoal inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-burgundy-deep">brush</span>
+                          מניקור ג'ל
+                        </span>
+</td>
+<td class="py-4 px-4 font-semibold text-warm-charcoal">
+                        שישי בוקר בלבד
+                      </td>
+<td class="py-4 px-4 text-warm-muted font-medium">
+                        23/10 09:20
+                      </td>
+<td class="py-4 px-4">
+<span class="px-3 py-1 rounded-full bg-white border border-sand-border text-warm-muted font-semibold inline-flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-sand-border-dark"></span>
+                          ממתינה למועד מתאים
+                        </span>
+</td>
+<td class="py-4 px-4 text-left">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-white text-warm-muted hover:text-burgundy-deep transition-colors" title="הצג היסטוריית תקשורת">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-white text-warm-muted hover:text-burgundy-deep transition-colors" title="הקפצת עדיפות">
+<span class="material-symbols-outlined text-[18px]">north</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-dusty-pink-light text-warm-muted hover:text-burgundy-deep transition-colors" title="הסרה מרשימה">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Hila Levin -->
+<tr class="hover:bg-creme-subtle/60 transition-colors">
+<td class="py-4 px-4 text-center">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-creme-subtle text-burgundy-deep font-semibold border border-sand-border">
+                          #4
+                        </span>
+</td>
+<td class="py-4 px-4 font-medium">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-white text-warm-muted font-bold flex items-center justify-center text-sm border border-sand-border">
+                            ה
+                          </div>
+<div>
+<span class="text-sm font-bold text-burgundy-deep block">הילה לוין</span>
+<span class="text-[11px] text-warm-muted">053-9182345</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="px-2.5 py-1 rounded-lg bg-creme-subtle font-semibold text-warm-charcoal inline-flex items-center gap-1.5 border border-sand-border">
+<span class="material-symbols-outlined text-[15px] text-burgundy-deep">face</span>
+                          עיצוב גבות
+                        </span>
+</td>
+<td class="py-4 px-4 font-semibold text-warm-charcoal">
+                        כל יום אחרי 16:00
+                      </td>
+<td class="py-4 px-4 text-warm-muted font-medium">
+                        23/10 14:05
+                      </td>
+<td class="py-4 px-4">
+<span class="px-3 py-1 rounded-full bg-white border border-sand-border text-warm-muted font-semibold inline-flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-sand-border-dark"></span>
+                          ממתינה למועד מתאים
+                        </span>
+</td>
+<td class="py-4 px-4 text-left">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-creme-subtle text-warm-muted hover:text-burgundy-deep transition-colors" title="הצג היסטוריית תקשורת">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-creme-subtle text-warm-muted hover:text-burgundy-deep transition-colors" title="הקפצת עדיפות">
+<span class="material-symbols-outlined text-[18px]">north</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-dusty-pink-light text-warm-muted hover:text-burgundy-deep transition-colors" title="הסרה מרשימה">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer -->
+<div class="px-6 py-4 bg-creme-subtle border-t border-sand-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-warm-muted text-xs">
+<span class="font-medium">מציג 4 מתוך 14 לקוחות ברשימה הפעילה</span>
+<button class="px-4 py-1.5 rounded-xl bg-white text-burgundy-deep text-xs font-bold border border-sand-border shadow-xs hover:bg-dusty-pink-light transition-colors">
+                  הצגת כל 14 הממתינות
+                </button>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Performance & Event Log -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Stat Card: 50% Recovery Fulfillment Rate -->
+<div class="lg:col-span-4 p-6 rounded-2xl bg-white border border-sand-border shadow-[0_4px_24px_rgba(91,30,49,0.03)] flex flex-col justify-between gap-6">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="text-base font-bold text-burgundy-deep">סטטיסטיקת מילוי השבוע</span>
+<span class="px-2.5 py-0.5 rounded-full bg-dusty-pink-light text-burgundy-deep text-xs font-bold border border-dusty-pink">
+                    עומד ביעד האפיון!
+                  </span>
+</div>
+<p class="text-xs text-warm-muted">יחס ביטולים מול תורים שניצלו ונחסכו על ידי המנוע</p>
+</div>
+<!-- Radial Graphic with Burgundy Fill -->
+<div class="flex items-center justify-center p-5 bg-creme-subtle rounded-2xl border border-sand-border gap-6">
+<div class="relative w-28 h-28 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-sand-border" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-burgundy-deep" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="50, 100" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="text-2xl font-extrabold text-burgundy-deep leading-none">50%</span>
+<span class="text-[11px] text-warm-muted font-bold mt-0.5">שיעור מילוי</span>
+</div>
+</div>
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-3 h-3 rounded-full bg-dusty-pink border border-dusty-pink-dark"></div>
+<div>
+<span class="text-[11px] text-warm-muted block">ביטולים שהתרחשו</span>
+<span class="text-sm font-bold text-warm-charcoal">6 ביטולים</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5">
+<div class="w-3 h-3 rounded-full bg-burgundy-deep border border-burgundy-deep"></div>
+<div>
+<span class="text-[11px] text-warm-muted block">מולאו בהצלחה</span>
+<span class="text-sm font-bold text-burgundy-deep">3 תורים מולאו</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Financial Saving summary with Sand / Dusty Pink / Burgundy -->
+<div class="p-4 rounded-xl bg-creme-subtle border border-sand-border flex items-center justify-between text-warm-charcoal">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-burgundy-deep text-white flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[22px] text-dusty-pink">savings</span>
+</div>
+<div>
+<span class="text-xs text-warm-muted block font-medium">סך הכנסה שנשמרה השבוע</span>
+<span class="text-xl font-black text-burgundy-deep">860 ₪</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-burgundy-deep text-[28px]">trending_up</span>
+</div>
+</div>
+<!-- Event History Timeline Log -->
+<div class="lg:col-span-8 p-6 rounded-2xl bg-white border border-sand-border shadow-[0_4px_24px_rgba(91,30,49,0.03)] flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-base font-bold text-burgundy-deep">יומן אירועים אחרונים - השבוע</h2>
+<p class="text-xs text-warm-muted">תיעוד אוטונומי של תנועות הביטול, פקיעת הצעות וההשלמה המהירה</p>
+</div>
+<span class="text-xs text-burgundy-deep font-bold flex items-center gap-1 bg-dusty-pink-light px-2.5 py-1 rounded-full border border-dusty-pink">
+<span class="material-symbols-outlined text-[15px]">sync</span> עדכון בזמן אמת
+                </span>
+</div>
+<div class="flex flex-col gap-3.5">
+<!-- Event Log Item 1: Confirmed -->
+<div class="p-4 rounded-xl bg-creme-subtle border border-sand-border hover:bg-creme-subtle/80 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-burgundy-deep text-white flex items-center justify-center shrink-0 border border-burgundy-deep font-bold">
+<span class="material-symbols-outlined text-[20px] text-dusty-pink">check_circle</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-burgundy-deep">מילוי תור הצליח: יום שלישי 11:00</span>
+<span class="px-2 py-0.5 rounded-full bg-dusty-pink-light text-burgundy-deep text-[11px] font-bold border border-dusty-pink">אושר תוך 8 דק'</span>
+</div>
+<p class="text-xs text-warm-muted">
+                        התור (מניקור) התבטל ← הוצע ל<strong>ליאור כץ</strong> ← אושר תוך 8 דקות ← נסגר ללא אובדן הכנסה.
+                      </p>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between shrink-0">
+<span class="text-sm font-bold text-burgundy-deep">+140 ₪ נשמרו</span>
+<span class="text-[11px] text-warm-muted">אתמול, 16:45</span>
+</div>
+</div>
+<!-- Event Log Item 2: Expiration and Fallover -->
+<div class="p-4 rounded-xl bg-creme-subtle border border-sand-border hover:bg-creme-subtle/80 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-dusty-pink text-burgundy-deep flex items-center justify-center shrink-0 border border-dusty-pink-dark/20 font-bold">
+<span class="material-symbols-outlined text-[20px]">forward</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-burgundy-deep">פקיעת הצעה והעברה למועמדת 2</span>
+<span class="px-2 py-0.5 rounded-full bg-dusty-pink text-burgundy-deep text-[11px] font-bold border border-dusty-pink-dark/20">העברה אוטומטית</span>
+</div>
+<p class="text-xs text-warm-muted">
+                        תור של יום שני 16:00 ← פקע לאחר 30 דקות ללא מענה ממועמדת 1 ← הועבר אוטומטית למועמדת 2 ואושר.
+                      </p>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between shrink-0">
+<span class="text-sm font-bold text-burgundy-deep">+340 ₪ נשמרו</span>
+<span class="text-[11px] text-warm-muted">שלשום, 14:10</span>
+</div>
+</div>
+<!-- Event Log Item 3: Auto-Cancellation detected -->
+<div class="p-4 rounded-xl bg-creme-subtle border border-sand-border hover:bg-creme-subtle/80 transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-full bg-white text-burgundy-deep flex items-center justify-center shrink-0 border border-sand-border font-bold">
+<span class="material-symbols-outlined text-[20px] text-burgundy-deep">event_busy</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-burgundy-deep">זיהוי ביטול עצמי ב-WhatsApp</span>
+<span class="px-2 py-0.5 rounded-full bg-dusty-pink-light text-burgundy-deep text-[11px] font-medium border border-dusty-pink">ביטול רגיל</span>
+</div>
+<p class="text-xs text-warm-muted">
+                        הלקוחה שירן אזולאי ביטלה תור לעיצוב גבות ליום ראשון 12:30 עקב מחלה. החלון הועבר לחיפוש ממתינות.
+                      </p>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between shrink-0">
+<span class="text-xs font-semibold text-warm-muted">המתנה למועמדת</span>
+<span class="text-[11px] text-warm-muted">21/10 18:02</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Add Client to Waitlist Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-burgundy-deep/40 backdrop-blur-sm hidden p-4" id="addModal">
+<div class="w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-sand-border overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+<div class="p-6 bg-creme-subtle border-b border-sand-border flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-2xl bg-burgundy-deep text-white flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[22px] text-dusty-pink">person_add</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-burgundy-deep">הוספת לקוחה לרשימת המתנה</h3>
+<p class="text-xs text-warm-muted">הסוכן יפנה אליה ברגע שיתפנה מועד מתאים</p>
+</div>
+</div>
+<button class="p-2 rounded-full text-warm-muted hover:bg-white transition-colors" id="closeAddModalBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="p-6 flex flex-col gap-4 text-warm-charcoal" id="waitlistForm">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-burgundy-deep">שם מלא של הלקוחה</label>
+<input class="w-full px-4 py-2.5 rounded-xl bg-creme-subtle border border-sand-border text-warm-charcoal placeholder:text-warm-muted/60 outline-none focus:ring-2 focus:ring-burgundy-deep text-sm" placeholder="למשל: דנה כהן" required="" type="text"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-burgundy-deep">מספר טלפון (WhatsApp)</label>
+<input class="w-full px-4 py-2.5 rounded-xl bg-creme-subtle border border-sand-border text-warm-charcoal placeholder:text-warm-muted/60 outline-none focus:ring-2 focus:ring-burgundy-deep text-sm" dir="ltr" placeholder="050-0000000" required="" type="tel"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-burgundy-deep">שירות מבוקש</label>
+<select class="w-full px-4 py-2.5 rounded-xl bg-creme-subtle border border-sand-border text-warm-charcoal outline-none focus:ring-2 focus:ring-burgundy-deep text-sm">
+<option value="facial">טיפול פנים קלאסי / זוהר (60 דק')</option>
+<option value="nails">מניקור ג'ל (45 דק')</option>
+<option value="brows">עיצוב והרמת גבות (30 דק')</option>
+<option value="laser">הסרת שיער / טיפול מיוחד (60 דק')</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-burgundy-deep">העדפת מועדים ושעות</label>
+<input class="w-full px-4 py-2.5 rounded-xl bg-creme-subtle border border-sand-border text-warm-charcoal placeholder:text-warm-muted/60 outline-none focus:ring-2 focus:ring-burgundy-deep text-sm" placeholder="למשל: ימי רביעי/חמישי אחרי 16:00, או שישי בוקר" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-burgundy-deep">הערות נוספות לסוכן</label>
+<textarea class="w-full px-4 py-2.5 rounded-xl bg-creme-subtle border border-sand-border text-warm-charcoal placeholder:text-warm-muted/60 outline-none focus:ring-2 focus:ring-burgundy-deep text-sm resize-none" placeholder="גמישה בהתראה של שעה מראש / מעדיפה את ענת בלבד..." rows="2"></textarea>
+</div>
+<div class="flex items-center justify-end gap-3 pt-3">
+<button class="px-4 py-2.5 rounded-xl text-warm-muted hover:bg-creme-subtle text-xs font-bold transition-colors" id="cancelModalBtn" type="button">
+                    ביטול
+                  </button>
+<button class="px-5 py-2.5 rounded-xl bg-burgundy-deep text-white hover:bg-burgundy-hover text-xs font-bold shadow-sm transition-all" type="submit">
+                    הוספה לרשימת המתנה
+                  </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<script>
+    // 30-minute countdown simulation
+    let totalSeconds = 18 * 60 + 42;
+    const countdownEl = document.getElementById('countdownTimer');
+
+    function updateTimer() {
+      if (!countdownEl) return;
+      if (totalSeconds <= 0) {
+        countdownEl.innerText = '00:00';
+        return;
+      }
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      countdownEl.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      totalSeconds--;
+    }
+    setInterval(updateTimer, 1000);
+
+    // Modal show / hide interactions
+    const openModalBtn = document.getElementById('openAddModalBtn');
+    const closeModalBtn = document.getElementById('closeAddModalBtn');
+    const cancelModalBtn = document.getElementById('cancelModalBtn');
+    const addModal = document.getElementById('addModal');
+    const waitlistForm = document.getElementById('waitlistForm');
+
+    function toggleModal(show) {
+      if (!addModal) return;
+      if (show) {
+        addModal.classList.remove('hidden');
+      } else {
+        addModal.classList.add('hidden');
+      }
+    }
+
+    if (openModalBtn) openModalBtn.addEventListener('click', () => toggleModal(true));
+    if (closeModalBtn) closeModalBtn.addEventListener('click', () => toggleModal(false));
+    if (cancelModalBtn) cancelModalBtn.addEventListener('click', () => toggleModal(false));
+
+    if (waitlistForm) {
+      waitlistForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        toggleModal(false);
+        alert('הלקוחה נוספה בהצלחה לרשימת ההמתנה ומנוע ה-AI יסרוק עבורה מועדים תואמים!');
+      });
+    }
+  </script>
+</body></html>
