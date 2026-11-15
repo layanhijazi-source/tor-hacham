@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html class="h-full" dir="rtl" lang="he"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>תור חכם - ניהול זמינות, שעות וקטלוג</title>
+<!-- Google Fonts: Noto Serif & Rubik -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#fff8f8",
+            "secondary-fixed": "#ffd9dc",
+            "on-background": "#22191d",
+            "inverse-on-surface": "#ffecf2",
+            "tertiary": "#30221f",
+            "secondary-container": "#ffd6d9",
+            "on-secondary-fixed-variant": "#5c3f42",
+            "surface-container-highest": "#f0dee3",
+            "inverse-surface": "#382d32",
+            "primary": "#4e071a",
+            "surface-tint": "#994250",
+            "primary-fixed": "#ffd9dc",
+            "surface": "#fff8f8",
+            "outline-variant": "#dac0c2",
+            "on-secondary-fixed": "#2c1518",
+            "primary-container": "#6b1f2e",
+            "secondary": "#765659",
+            "secondary-fixed-dim": "#e5bdc0",
+            "on-primary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#22191d",
+            "on-primary-container": "#ee8694",
+            "primary-fixed-dim": "#ffb2ba",
+            "surface-container-high": "#f6e4e9",
+            "on-error-container": "#93000a",
+            "on-secondary-container": "#7a5a5d",
+            "surface-dim": "#e7d6db",
+            "tertiary-fixed": "#f6ddd9",
+            "surface-container": "#fce9ef",
+            "on-tertiary-fixed-variant": "#544340",
+            "inverse-primary": "#ffb2ba",
+            "error": "#ba1a1a",
+            "surface-variant": "#f0dee3",
+            "surface-bright": "#fff8f8",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#b6a09c",
+            "on-primary-fixed-variant": "#7b2b3a",
+            "on-surface-variant": "#544244",
+            "tertiary-container": "#473734",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#261816",
+            "tertiary-fixed-dim": "#d9c1bd",
+            "outline": "#877273",
+            "on-primary-fixed": "#400011",
+            "surface-container-low": "#fff0f4"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "2rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin-tablet": "2rem",
+            "gutter": "1rem",
+            "gutter-tablet": "1.5rem",
+            "space-xl": "2.5rem",
+            "space-md": "1rem",
+            "margin-desktop": "3rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Noto Serif"],
+            "body-md": ["Rubik"],
+            "display-mobile": ["Noto Serif"],
+            "label-md": ["Rubik"],
+            "display": ["Noto Serif"],
+            "headline-md": ["Noto Serif"],
+            "body-lg": ["Rubik"],
+            "headline-lg": ["Noto Serif"],
+            "body-sm": ["Rubik"],
+            "label-sm": ["Rubik"],
+            "label-lg": ["Rubik"],
+            "headline-lg-mobile": ["Noto Serif"]
+          },
+          "fontSize": {
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "display": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Delicate custom hair-border & boutique glow */
+    .boutique-border {
+      border: 1px solid rgba(107, 31, 46, 0.12);
+    }
+    .boutique-input-focus:focus {
+      border-color: #6b1f2e;
+      box-shadow: 0 0 0 3px rgba(201, 163, 166, 0.35);
+      outline: none;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen selection:bg-secondary-container selection:text-primary">
+<div class="flex min-h-screen">
+<!-- ================= RIGHT SIDEBAR NAVIGATION (SideNavBar) ================= -->
+<aside class="docked fixed right-0 top-0 bottom-0 h-screen w-72 z-40 bg-surface-container-lowest border-l border-outline-variant/30 flex flex-col justify-between p-space-lg">
+<!-- Brand & Header -->
+<div class="flex flex-col gap-space-lg">
+<div class="flex items-start gap-3.5 pb-2">
+<div class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center border border-outline-variant/40 text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="spa" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-sm font-semibold text-primary tracking-tight">תור חכם</h1>
+<p class="font-label-md text-label-md text-on-surface-variant font-normal">בוטיק וקליניקה לאסתטיקה</p>
+</div>
+</div>
+<!-- Quick CTA Button -->
+<!-- Navigation Links -->
+<nav aria-label="תפריט ראשי" class="flex flex-col gap-1.5"><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-xl transition-colors duration-150 active:scale-[0.99] font-label-lg text-label-lg" href="#"><span class="material-symbols-outlined text-xl" data-icon="calendar_month">calendar_month</span><span>יומן יומי</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-xl transition-colors duration-150 active:scale-[0.99] font-label-lg text-label-lg" href="#"><span class="material-symbols-outlined text-xl" data-icon="hourglass_top">hourglass_top</span><span>רשימת המתנה</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-xl transition-colors duration-150 active:scale-[0.99] font-label-lg text-label-lg" href="#"><span class="material-symbols-outlined text-xl" data-icon="support_agent">support_agent</span><span>פניות לטיפול אנושי</span></a><a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-xl font-medium active:scale-[0.99] font-label-lg text-label-lg shadow-sm border border-outline-variant/40" href="#"><span class="material-symbols-outlined text-xl text-primary" data-icon="schedule" style="font-variation-settings: 'FILL' 1;">schedule</span><span class="text-primary font-semibold">זמינות ושעות</span></a><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-xl transition-colors duration-150 active:scale-[0.99] font-label-lg text-label-lg" href="#"><span class="material-symbols-outlined text-xl" data-icon="monitoring">monitoring</span><span>מדדים</span></a></nav>
+</div>
+<!-- Footer: מנהלת הבוטיק Profile -->
+<div class="pt-4 border-t border-outline-variant/30 flex items-center justify-between"><div class="flex items-center gap-3"><div class="relative"><div class="w-10 h-10 rounded-full bg-secondary-container text-primary flex items-center justify-center font-headline-sm font-semibold border border-outline-variant/40 text-lg">ב</div><span class="absolute bottom-0 left-0 w-2.5 h-2.5 rounded-full bg-primary border-2 border-surface-container-lowest"></span></div><div class="flex flex-col"><span class="font-label-lg text-label-lg font-medium text-on-surface">בעלת המכון</span><span class="font-label-sm text-label-sm text-on-surface-variant">ניהול מערכת · מחוברת</span></div></div></div>
+</aside>
+<!-- ================= MAIN CONTENT WRAPPER ================= -->
+<div class="flex-1 mr-72 flex flex-col min-h-screen bg-background">
+<!-- ================= TOP APP BAR ================= -->
+<header class="sticky top-0 z-30 bg-background/90 backdrop-blur-md px-space-xl py-space-md flex justify-between items-center border-b border-outline-variant/30">
+<!-- Titles -->
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-sm text-label-sm text-secondary tracking-wide">ניהול יומן ומערכת</span>
+<span class="text-outline-variant text-xs">•</span>
+<span class="font-label-sm text-label-sm text-primary font-medium">בוטיק אסתטיקה</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-semibold text-primary tracking-tight">זמינות, שעות וקטלוג שירותים</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">ניהול שעות הפעילות של הבוטיק, חסימת זמנים מותאמת והגדרת זמני טיפול</p>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-3">
+<button aria-label="התראות" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-xl transition-colors duration-150 relative" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary ring-2 ring-background"></span>
+</button>
+<button aria-label="עזרה" class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-xl transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Primary Action Button: שמירת שינויים -->
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary text-on-primary rounded-xl font-label-lg text-label-lg font-medium hover:bg-primary-container shadow-sm active:scale-95 transition-all duration-150 mr-2" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="check">check</span>
+<span>שמירת שינויים</span>
+</button>
+</div>
+</header>
+<!-- ================= MAIN VIEW CANVAS ================= -->
+<main class="flex-1 p-space-xl max-w-7xl w-full mx-auto">
+<!-- Status summary banner / subtle salon mood strip -->
+<div class="mb-space-lg p-4 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-secondary-container text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-lg" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+</span>
+<div class="text-sm">
+<span class="font-medium text-on-surface">היומן מסונכרן ופעיל בזמן אמת.</span>
+<span class="text-on-surface-variant mr-1.5 font-normal">כל שינוי מתעדכן אוטומטית במערכת ההזמנות המקוונת של הלקוחות.</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-xs font-label-md text-on-surface-variant">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+              שעות פתיחה סטנדרטיות (א׳–ו׳)
+            </span>
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+              שבת מנוחה
+            </span>
+</div>
+</div>
+<!-- 2-Column Responsive Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- ================= LEFT / PRIMARY COLUMN: REGULAR HOURS (7 cols) ================= -->
+<section class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- CARD 1: שעות פעילות קבועות -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg boutique-border shadow-xs">
+<div class="flex items-start justify-between border-b border-outline-variant/30 pb-4 mb-5">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="access_time">access_time</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-primary">שעות פעילות קבועות</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                    שינוי שעות משפיע מיד על הזמינות שהלקוחות רואות. תורים קיימים לא נמחקים.
+                  </p>
+</div>
+<span class="px-2.5 py-1 rounded-full text-xs font-label-md bg-surface-container text-on-surface-variant border border-outline-variant/40">
+                  7 ימים בשבוע
+                </span>
+</div>
+<!-- Days List -->
+<div class="space-y-3">
+<!-- יום ראשון -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors duration-150 border border-outline-variant/20">
+<div class="flex items-center gap-4 w-32">
+<!-- Boutique Toggle (Active) -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="font-medium text-on-surface font-label-lg text-label-lg">ראשון</span>
+</div>
+<div class="flex items-center gap-2 flex-1 justify-end">
+<span class="text-xs text-on-surface-variant">משעה</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="09:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-on-surface-variant px-1">עד</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="19:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-secondary mr-2 font-label-md">10 שעות פעילות</span>
+</div>
+</div>
+<!-- יום שני -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors duration-150 border border-outline-variant/20">
+<div class="flex items-center gap-4 w-32">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="font-medium text-on-surface font-label-lg text-label-lg">שני</span>
+</div>
+<div class="flex items-center gap-2 flex-1 justify-end">
+<span class="text-xs text-on-surface-variant">משעה</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="09:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-on-surface-variant px-1">עד</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="19:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-secondary mr-2 font-label-md">10 שעות פעילות</span>
+</div>
+</div>
+<!-- יום שלישי -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors duration-150 border border-outline-variant/20">
+<div class="flex items-center gap-4 w-32">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="font-medium text-on-surface font-label-lg text-label-lg">שלישי</span>
+</div>
+<div class="flex items-center gap-2 flex-1 justify-end">
+<span class="text-xs text-on-surface-variant">משעה</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="09:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-on-surface-variant px-1">עד</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="19:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-secondary mr-2 font-label-md">10 שעות פעילות</span>
+</div>
+</div>
+<!-- יום רביעי -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors duration-150 border border-outline-variant/20">
+<div class="flex items-center gap-4 w-32">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="font-medium text-on-surface font-label-lg text-label-lg">רביעי</span>
+</div>
+<div class="flex items-center gap-2 flex-1 justify-end">
+<span class="text-xs text-on-surface-variant">משעה</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="09:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-on-surface-variant px-1">עד</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="19:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-secondary mr-2 font-label-md">10 שעות פעילות</span>
+</div>
+</div>
+<!-- יום חמישי -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors duration-150 border border-outline-variant/20">
+<div class="flex items-center gap-4 w-32">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="font-medium text-on-surface font-label-lg text-label-lg">חמישי</span>
+</div>
+<div class="flex items-center gap-2 flex-1 justify-end">
+<span class="text-xs text-on-surface-variant">משעה</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="09:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-on-surface-variant px-1">עד</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="19:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-secondary mr-2 font-label-md">10 שעות פעילות</span>
+</div>
+</div>
+<!-- יום שישי -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors duration-150 border border-outline-variant/20">
+<div class="flex items-center gap-4 w-32">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="font-medium text-on-surface font-label-lg text-label-lg">שישי</span>
+</div>
+<div class="flex items-center gap-2 flex-1 justify-end">
+<span class="text-xs text-on-surface-variant">משעה</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="09:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-on-surface-variant px-1">עד</span>
+<div class="relative">
+<input class="w-24 text-center py-1.5 px-2 bg-surface-container-lowest border border-outline-variant/50 rounded-lg text-sm text-on-surface font-medium boutique-input-focus" type="text" value="13:00"/>
+<span class="material-symbols-outlined text-outline-variant text-base absolute left-2 top-2 pointer-events-none" data-icon="schedule">schedule</span>
+</div>
+<span class="text-xs text-secondary mr-2 font-label-md">יום קצר (4 שעות)</span>
+</div>
+</div>
+<!-- יום שבת (סגור) -->
+<div class="flex items-center justify-between p-3.5 rounded-xl bg-surface-container/30 border border-outline-variant/20 opacity-75">
+<div class="flex items-center gap-4 w-32">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant/70 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<span class="font-medium text-on-surface-variant font-label-lg text-label-lg">שבת</span>
+</div>
+<div class="flex items-center gap-2 flex-1 justify-end">
+<span class="px-4 py-1.5 rounded-lg bg-surface-container-high/60 text-secondary text-sm font-label-md border border-outline-variant/30 italic flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="nightlight">nightlight</span>
+                      סגור כל היום · יום מנוחה
+                    </span>
+</div>
+</div>
+</div>
+<!-- Fast Action: שכפול שעות / סנכרון -->
+<div class="mt-5 pt-4 border-t border-outline-variant/20 flex justify-between items-center text-xs text-on-surface-variant">
+<span></span>
+<button class="text-primary hover:text-primary-container font-label-md underline underline-offset-2" type="button">איפוס לשעות ברירת מחדל</button>
+</div>
+</div>
+</section>
+<!-- ================= RIGHT COLUMN: EXCEPTIONS & CATALOGUE (5 cols) ================= -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- CARD 2: חריגים וחסימות (Exceptions & Time Blocks) -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg boutique-border shadow-xs">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-4 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="block">block</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-primary">חריגים וחסימות</h3>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-2 py-0.5 rounded-md">2 חסימות פעילות</span>
+</div>
+<!-- Add Block Form -->
+<div class="p-4 rounded-xl bg-surface-container-low/70 border border-outline-variant/30 mb-4 space-y-3.5">
+<span class="font-label-md text-label-md font-medium text-on-surface block">חסימת זמן חדשה:</span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+<!-- Day / Date Selector -->
+<div class="col-span-2">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">בחירת יום / תאריך</label>
+<div class="relative">
+<input class="w-full py-2 pr-9 pl-3 bg-surface-container-lowest border border-outline-variant/60 rounded-xl text-sm text-on-surface boutique-input-focus" type="text" value="היום, 15 בנובמבר 2026"/>
+<span class="material-symbols-outlined text-outline-variant absolute right-2.5 top-2.5 text-lg" data-icon="calendar_today">calendar_today</span>
+</div>
+</div>
+<!-- From Time -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">משעה</label>
+<div class="relative">
+<input class="w-full py-2 pr-9 pl-3 bg-surface-container-lowest border border-outline-variant/60 rounded-xl text-sm text-on-surface boutique-input-focus" type="text" value="14:00"/>
+<span class="material-symbols-outlined text-outline-variant absolute right-2.5 top-2.5 text-lg" data-icon="schedule">schedule</span>
+</div>
+</div>
+<!-- To Time -->
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">עד שעה</label>
+<div class="relative">
+<input class="w-full py-2 pr-9 pl-3 bg-surface-container-lowest border border-outline-variant/60 rounded-xl text-sm text-on-surface boutique-input-focus" type="text" value="15:30"/>
+<span class="material-symbols-outlined text-outline-variant absolute right-2.5 top-2.5 text-lg" data-icon="schedule">schedule</span>
+</div>
+</div>
+<!-- Reason Input -->
+<div class="col-span-2">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">סיבה (למשל: חופשה, הפסקה, סידורים)</label>
+<input class="w-full py-2 px-3 bg-surface-container-lowest border border-outline-variant/60 rounded-xl text-sm text-on-surface boutique-input-focus placeholder:text-outline/70" placeholder="לדוגמה: ישיבת צוות וארגון מלאי" type="text"/>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-1 flex justify-end">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary-container text-on-primary rounded-xl font-label-lg text-label-lg font-medium hover:bg-primary transition-colors duration-150 shadow-sm active:scale-95" type="button">
+<span class="material-symbols-outlined text-base" data-icon="lock">lock</span>
+<span>חסימה</span>
+</button>
+</div>
+</div>
+<!-- Inline Error Notice in terracotta/red banner -->
+<div class="p-3.5 mb-4 rounded-xl bg-error-container/40 border border-error/25 flex items-start gap-2.5 text-error">
+<span class="material-symbols-outlined text-lg shrink-0 mt-0.5" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div class="text-xs font-body-sm leading-relaxed text-on-error-container">
+<span class="font-semibold block mb-0.5">התראה על התנגשות ביומן:</span>
+                  בזמן הזה יש תור מאושר. בטלי אותו קודם או בחרי שעה אחרת.
+                </div>
+</div>
+<!-- List of Active Blocks -->
+<div class="space-y-2.5">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium block">חסימות קיימות במערכת:</span>
+<!-- Block Item 1 -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:border-outline-variant transition-colors">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="restaurant">restaurant</span>
+</span>
+<div>
+<div class="text-sm font-medium text-on-surface">היום 13:00–14:00</div>
+<div class="text-xs text-on-surface-variant">הפסקת צהריים</div>
+</div>
+</div>
+<button class="text-xs font-label-md text-primary hover:text-on-primary hover:bg-primary px-3 py-1.5 rounded-lg border border-primary/30 transition-all duration-150" type="button">
+                    הסרה
+                  </button>
+</div>
+<!-- Block Item 2 -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/40 hover:border-outline-variant transition-colors">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-lg bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="flight_takeoff">flight_takeoff</span>
+</span>
+<div>
+<div class="text-sm font-medium text-on-surface">יום חמישי 19.11.2026 · כל היום</div>
+<div class="text-xs text-on-surface-variant">חופשה מתוכננת</div>
+</div>
+</div>
+<button class="text-xs font-label-md text-primary hover:text-on-primary hover:bg-primary px-3 py-1.5 rounded-lg border border-primary/30 transition-all duration-150" type="button">
+                    הסרה
+                  </button>
+</div>
+</div>
+</div>
+<!-- CARD 3: קטלוג שירותים (Service Catalogue) -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg boutique-border shadow-xs">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-4 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="spa">spa</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-primary">קטלוג שירותים</h3>
+</div>
+<div class="flex items-center gap-2">
+<button class="cursor-not-allowed opacity-75 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant text-xs font-label-md border border-outline-variant/40" disabled="" type="button">
+<span>הוספת שירות</span>
+<span class="px-1.5 py-0.2 bg-secondary-container text-on-secondary-container rounded text-[10px] font-semibold">בשלב הבא</span>
+</button>
+</div>
+</div>
+<!-- Treatment List -->
+<div class="space-y-2.5 mb-4">
+<!-- Treatment 1: טיפול פנים -->
+<div class="p-3.5 rounded-xl bg-surface-container-low/50 border border-outline-variant/30 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-secondary-container/60 text-primary flex items-center justify-center font-headline-sm text-xs font-bold">
+                      01
+                    </span>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-medium text-on-surface text-sm">טיפול פנים</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-label-sm text-primary bg-secondary-container px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                          פעיל להזמנה
+                        </span>
+</div>
+<div class="text-xs text-on-surface-variant mt-0.5">משך: 60 דק׳ · מחיר: 250 ₪</div>
+</div>
+</div>
+<button aria-label="עריכת טיפול פנים" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Treatment 2: מניקור -->
+<div class="p-3.5 rounded-xl bg-surface-container-low/50 border border-outline-variant/30 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-secondary-container/60 text-primary flex items-center justify-center font-headline-sm text-xs font-bold">
+                      02
+                    </span>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-medium text-on-surface text-sm">מניקור</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-label-sm text-primary bg-secondary-container px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                          פעיל להזמנה
+                        </span>
+</div>
+<div class="text-xs text-on-surface-variant mt-0.5">משך: 45 דק׳ · מחיר: 100 ₪</div>
+</div>
+</div>
+<button aria-label="עריכת מניקור" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+</div>
+<!-- Treatment 3: עיצוב גבות -->
+<div class="p-3.5 rounded-xl bg-surface-container-low/50 border border-outline-variant/30 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-secondary-container/60 text-primary flex items-center justify-center font-headline-sm text-xs font-bold">
+                      03
+                    </span>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-medium text-on-surface text-sm">עיצוב גבות</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-label-sm text-primary bg-secondary-container px-2 py-0.5 rounded-full">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                          פעיל להזמנה
+                        </span>
+</div>
+<div class="text-xs text-on-surface-variant mt-0.5">משך: 20 דק׳ · מחיר: 60 ₪</div>
+</div>
+</div>
+<button aria-label="עריכת עיצוב גבות" class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container rounded-lg transition-colors" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="edit">edit</span>
+</button>
+</div>
+</div>
+<!-- Buffer Time Rule -->
+<div class="p-3 rounded-xl bg-surface-container/60 border border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="sanitizer">sanitizer</span>
+<div>
+<span class="text-xs font-medium text-on-surface block">זמן התארגנות וחיטוי</span>
+<span class="text-[11px] text-on-surface-variant">מרווח אוטומטי מוגדר בין תור לתור</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-lowest px-2.5 py-1 rounded-lg border border-outline-variant/40 text-xs font-medium text-primary">
+<span>10 דקות</span>
+<span class="material-symbols-outlined text-xs" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+<!-- CARD 4: בשלב הבא (Roadmap / Upcoming Features) -->
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

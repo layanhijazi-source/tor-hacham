@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="he"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>תור חכם - פניות לטיפול אנושי</title>
+<!-- Google Fonts: Noto Serif Hebrew & Rubik for Atelier Serenity Aesthetics -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim from System -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#473734",
+            "surface-dim": "#e7d6db",
+            "on-primary": "#ffffff",
+            "surface": "#fff8f8",
+            "surface-container-highest": "#f0dee3",
+            "on-tertiary-fixed-variant": "#544340",
+            "surface-variant": "#f0dee3",
+            "primary-fixed-dim": "#ffb2ba",
+            "on-surface-variant": "#544244",
+            "tertiary-fixed-dim": "#d9c1bd",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#ee8694",
+            "surface-tint": "#994250",
+            "on-secondary-fixed": "#2c1518",
+            "on-primary-fixed-variant": "#7b2b3a",
+            "tertiary": "#30221f",
+            "secondary-fixed": "#ffd9dc",
+            "surface-container-high": "#f6e4e9",
+            "error": "#ba1a1a",
+            "tertiary-fixed": "#f6ddd9",
+            "on-tertiary-fixed": "#261816",
+            "on-background": "#22191d",
+            "primary-container": "#6b1f2e",
+            "secondary-container": "#ffd6d9",
+            "primary-fixed": "#ffd9dc",
+            "secondary": "#765659",
+            "background": "#fff8f8",
+            "surface-container": "#fce9ef",
+            "on-error": "#ffffff",
+            "on-secondary": "#ffffff",
+            "primary": "#4e071a",
+            "on-surface": "#22191d",
+            "surface-container-low": "#fff0f4",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#e5bdc0",
+            "inverse-on-surface": "#ffecf2",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#400011",
+            "outline-variant": "#dac0c2",
+            "on-tertiary-container": "#b6a09c",
+            "inverse-surface": "#382d32",
+            "outline": "#877273",
+            "on-secondary-container": "#7a5a5d",
+            "surface-bright": "#fff8f8",
+            "inverse-primary": "#ffb2ba",
+            "on-secondary-fixed-variant": "#5c3f42"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "margin-tablet": "2rem",
+            "margin-desktop": "3rem",
+            "space-lg": "1.5rem",
+            "gutter-desktop": "2rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter-tablet": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Noto Serif", "serif"],
+            "label-md": ["Rubik", "sans-serif"],
+            "headline-sm": ["Noto Serif", "serif"],
+            "display": ["Noto Serif", "serif"],
+            "display-mobile": ["Noto Serif", "serif"],
+            "body-lg": ["Rubik", "sans-serif"],
+            "label-sm": ["Rubik", "sans-serif"],
+            "body-sm": ["Rubik", "sans-serif"],
+            "headline-lg-mobile": ["Noto Serif", "serif"],
+            "headline-lg": ["Noto Serif", "serif"],
+            "label-lg": ["Rubik", "sans-serif"],
+            "body-md": ["Rubik", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "500" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "display": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "0", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+            "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(240, 222, 227, 0.4);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #dac0c2;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #877273;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md min-h-screen flex flex-row selection:bg-secondary-container selection:text-primary">
+<!-- ============================================================== -->
+<!-- SIDE NAV BAR (RTL Right side anchored, Shared Component)     -->
+<!-- ============================================================== -->
+<aside class="fixed top-0 right-0 h-screen w-72 z-40 bg-surface-container-low border-l border-outline-variant/30 flex flex-col justify-between p-4 shadow-sm select-none">
+<!-- Top Brand & Navigation -->
+<div class="flex flex-col gap-5">
+<!-- Clinic Brand Header -->
+<div class="flex items-center gap-3.5 px-3 py-2">
+<div class="w-11 h-11 rounded-xl bg-primary-container text-surface flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-2xl" data-icon="spa" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-semibold text-primary leading-tight">תור חכם</span>
+<span class="font-label-sm text-label-sm text-secondary">בוטיק וקליניקה לאסתטיקה</span>
+</div>
+</div>
+<!-- Quick Action CTA -->
+<!-- Main Navigation Cluster -->
+<nav aria-label="תפריט ראשי" class="flex flex-col gap-1.5 mt-1"><a class="flex items-center gap-3 px-4 py-3 text-secondary font-label-lg text-label-lg rounded-xl hover:bg-surface-container-high/60 transition-colors" href="#"><span class="material-symbols-outlined text-xl" data-icon="calendar_today">calendar_today</span><span>יומן יומי</span></a><a class="flex items-center gap-3 px-4 py-3 text-secondary font-label-lg text-label-lg rounded-xl hover:bg-surface-container-high/60 transition-colors" href="#"><span class="material-symbols-outlined text-xl" data-icon="hourglass_top">hourglass_top</span><span>רשימת המתנה</span></a><a class="flex items-center justify-between px-4 py-3 bg-secondary-container text-on-secondary-container font-label-lg text-label-lg rounded-xl transition-all duration-200 shadow-sm" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-xl text-primary" data-icon="support_agent" style="font-variation-settings: 'FILL' 1;">support_agent</span><span class="font-medium text-primary">פניות לטיפול אנושי</span></div><span class="inline-flex items-center justify-center px-2 py-0.5 text-xs font-semibold rounded-full bg-primary-container text-on-primary">3</span></a><a class="flex items-center gap-3 px-4 py-3 text-secondary font-label-lg text-label-lg rounded-xl hover:bg-surface-container-high/60 transition-colors" href="#"><span class="material-symbols-outlined text-xl" data-icon="schedule">schedule</span><span>זמינות ושעות</span></a><a class="flex items-center gap-3 px-4 py-3 text-secondary font-label-lg text-label-lg rounded-xl hover:bg-surface-container-high/60 transition-colors" href="#"><span class="material-symbols-outlined text-xl" data-icon="monitoring">monitoring</span><span>מדדים</span></a></nav>
+</div>
+<!-- Bottom Account & Logout Cluster -->
+<div class="border-t border-outline-variant/30 pt-3 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2.5 text-secondary font-label-lg text-label-lg rounded-xl hover:bg-surface-container-high/60 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
+<span>הגדרות חשבון</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-secondary font-label-lg text-label-lg rounded-xl hover:bg-surface-container-high/60 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="logout">logout</span>
+<span>התנתקות</span>
+</a>
+<!-- Clinic Admin Profile Snippet -->
+<div class="mt-2 p-2.5 rounded-xl bg-surface-container-high/40 flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-headline-sm font-semibold text-sm border border-outline-variant/40">ב</div><div class="flex flex-col overflow-hidden"><span class="font-label-md text-label-md font-medium text-on-surface truncate">בעלת המכון</span><span class="font-label-sm text-label-sm text-secondary truncate">מנהלת ומטפלת ראשית</span></div></div>
+</div>
+</aside>
+<!-- ============================================================== -->
+<!-- MAIN WORKSPACE CANVAS (Margin-right 72 for persistent nav)     -->
+<!-- ============================================================== -->
+<div class="flex-1 mr-72 flex flex-col min-h-screen bg-background">
+<!-- TOP NAVIGATION BAR (Shared Component Anchor) -->
+<header class="sticky top-0 w-full z-30 bg-surface/85 backdrop-blur-md border-b border-outline-variant/30 px-8 py-3.5 flex justify-between items-center select-none shadow-[0_1px_8px_rgba(42,32,36,0.03)]">
+<!-- Breadcrumb & Clinic Location status -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 text-secondary font-label-md text-label-md">
+<span>תור חכם</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+<span class="text-primary font-medium">פניות לטיפול אנושי</span>
+</div>
+</div>
+<!-- Trailing Action Badges & Controls -->
+<div class="flex items-center gap-4">
+<!-- WhatsApp Live Integration Status Badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high/60 border border-outline-variant/40 text-secondary text-label-md font-label-md shadow-xs"><span class="w-2 h-2 rounded-full bg-outline/60"></span><span class="font-medium text-secondary">סימולציה · אין חיבור ל-WhatsApp</span></div>
+<!-- Help Action -->
+<button class="w-9 h-9 rounded-xl hover:bg-surface-container-high/60 flex items-center justify-center text-secondary transition-colors" title="עזרה ותמיכה">
+<span class="material-symbols-outlined text-xl" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Notification Bell with Ping -->
+<button class="relative w-9 h-9 rounded-xl hover:bg-surface-container-high/60 flex items-center justify-center text-secondary transition-colors" title="התראות">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface"></span>
+</button>
+<div class="h-5 w-px bg-outline-variant/40"></div>
+<!-- Clinic Admin Mini Profile -->
+<div class="flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-headline-sm font-semibold text-sm border border-outline-variant/40">ב</div><span class="text-label-md font-label-md text-on-surface font-medium hidden lg:inline-block">בעלת המכון</span></div>
+</div>
+</header>
+<!-- CONTENT WRAPPER -->
+<main class="flex-1 p-8 max-w-[1520px] w-full mx-auto flex flex-col gap-6">
+<!-- PAGE EDITORIAL HEADER -->
+<section class="flex flex-col gap-1.5 max-w-4xl">
+<div class="flex items-center gap-3">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">פניות לטיפול אנושי</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-semibold">
+            3 פניות ממתינות
+          </span>
+</div>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+          שאלות רפואיות, החזרים, תלונות, מועדים חריגים, שירותים שאינם בקטלוג, ביטול אחרי תחילת התור והודעות לא מובנות. המענה האוטומטי ללקוחה מושהה עד סימון טופל.
+        </p>
+</section>
+<!-- TWO-PANE CONCIERGE SPLIT LAYOUT -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- ============================================================== -->
+<!-- RIGHT PANE (Queue / Ticket List - ~400px column)                -->
+<!-- ============================================================== -->
+<div class="col-span-12 lg:col-span-5 xl:col-span-4 flex flex-col bg-surface-container-lowest border border-outline-variant/40 rounded-2xl shadow-[0_4px_20px_-4px_rgba(42,32,36,0.05)] overflow-hidden">
+<!-- Filter Tabs & Quick Search Controls -->
+<div class="p-4 border-b border-outline-variant/30 flex flex-col gap-3 bg-surface-container-low/40">
+<!-- Filter Pills -->
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-primary-container text-on-primary font-label-md text-label-md font-medium shadow-xs">
+<span>פתוחות</span>
+<span class="w-5 h-5 rounded-full bg-white/20 text-xs flex items-center justify-center font-bold">3</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-secondary hover:bg-surface-container-high transition-colors font-label-md text-label-md font-medium">
+<span>טופלו</span>
+<span class="text-xs opacity-75">(18)</span>
+</button>
+</div>
+<!-- Search Field -->
+<div class="relative">
+<span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-lg" data-icon="search">search</span>
+</span>
+<input class="w-full pr-9 pl-3 py-2 rounded-xl bg-surface-bright border border-outline-variant/60 font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="חיפוש לפי שם לקוחה או תוכן פנייה..." type="text"/>
+</div>
+</div>
+<!-- Queue Item Cards List -->
+<div class="flex flex-col divide-y divide-outline-variant/20 max-h-[640px] overflow-y-auto custom-scrollbar">
+<!-- Item 1: SELECTED / ACTIVE ITEM (מאיה דהן) -->
+<article class="p-4 bg-surface-container-low/70 border-r-4 border-primary cursor-pointer transition-colors relative hover:bg-surface-container-low">
+<div class="flex items-start justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container text-surface flex items-center justify-center font-label-md font-medium text-xs">
+                    מ
+                  </div>
+<div>
+<h3 class="font-label-lg text-label-lg font-semibold text-on-surface">מאיה דהן</h3>
+<span class="font-label-sm text-label-sm text-secondary">050-555-0104</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-medium">לפני 4 דק׳</span>
+</div>
+<!-- Topic Chip -->
+<div class="flex items-center gap-2 my-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-secondary-container text-primary font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-xs" data-icon="medical_services">medical_services</span>
+                  שאלה רפואית
+                </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200/60 text-xs font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                  ממתינה למענה
+                </span>
+</div>
+<!-- Snippet Preview -->
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 leading-relaxed">
+                "היי, האם הטיפול פנים מתאים אם יש לי אלרגיה קלה לחומצות פירות (AHA/BHA)..."
+              </p>
+</article>
+<!-- Item 2: דנה מזרחי (Pending Refund) -->
+<article class="p-4 bg-surface-container-lowest hover:bg-surface-container-low/40 cursor-pointer transition-colors">
+<div class="flex items-start justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md font-medium text-xs">
+                    ד
+                  </div>
+<div>
+<h3 class="font-label-lg text-label-lg font-medium text-on-surface">דנה מזרחי</h3>
+<span class="font-label-sm text-label-sm text-secondary">050-555-0102</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">לפני 20 דק׳</span>
+</div>
+<!-- Topic Chip -->
+<div class="flex items-center gap-2 my-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-xs" data-icon="currency_exchange">currency_exchange</span>
+                  בקשת החזר
+                </span>
+</div>
+<!-- Snippet Preview -->
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2 leading-relaxed">
+                "היי, רציתי לברר לגבי החזר על מקדמה ששילמתי לטיפול שבוטל בגלל מחלה של הילד..."
+              </p>
+</article>
+<!-- Item 3: רונית לוי (Irregular Timing Request) -->
+<article class="p-4 bg-surface-container-lowest hover:bg-surface-container-low/40 cursor-pointer transition-colors">
+<div class="flex items-start justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md font-medium text-xs">
+                    ר
+                  </div>
+<div>
+<h3 class="font-label-lg text-label-lg font-medium text-on-surface">רונית לוי</h3>
+<span class="font-label-sm text-label-sm text-secondary">050-555-0103</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">לפני שעה</span>
+</div>
+<!-- Topic Chip -->
+<div class="flex items-center gap-2 my-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-surface-variant text-on-surface-variant font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-xs" data-icon="event_busy">event_busy</span>
+                  בקשה למועד חריג (שבת)
+                </span>
+</div>
+<!-- Snippet Preview -->
+<p class="font-body-sm text-body-sm text-secondary line-clamp-2 leading-relaxed">
+                "אפשר אולי לקבוע טיפול לשבת בבוקר באופן חריג לרגל אירוע משפחתי חשוב?"
+              </p>
+</article>
+<!-- Item 4: שירה כהן (Handled / Muted) -->
+<article class="p-4 bg-surface-container-low/20 opacity-70 hover:opacity-100 transition-opacity">
+<div class="flex items-start justify-between gap-2 mb-1.5">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container text-outline flex items-center justify-center font-label-md font-medium text-xs">
+                    ש
+                  </div>
+<div>
+<h3 class="font-label-lg text-label-lg font-normal text-on-surface line-through decoration-outline">שירה כהן</h3>
+<span class="font-label-sm text-label-sm text-outline">050-555-0101</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">050-555-0101</span>
+</div>
+<!-- Topic Chip & Status -->
+<div class="flex items-center gap-2 my-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-surface-container-high text-secondary font-label-sm text-label-sm">
+                  שירות שאינו בקטלוג (לייזר)
+                </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 text-xs font-medium">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span>
+                  טופלה
+                </span>
+</div>
+<!-- Snippet Preview -->
+<p class="font-body-sm text-body-sm text-outline line-clamp-1">
+                "הוסבר שהקליניקה אינה מציעה הסרת שיער בלייזר והופנתה לקולגה מומלצת."
+              </p>
+</article>
+</div>
+<!-- Bottom Summary Indicator -->
+<div class="p-3 bg-surface-container-low/30 border-t border-outline-variant/30 text-center font-label-sm text-label-sm text-secondary">
+            כל הפניות מוצפנות ומסונכרנות מול יומן הקליניקה
+          </div>
+</div>
+<!-- ============================================================== -->
+<!-- LEFT PANE (Detail & Action Console - Spanning rest of grid)   -->
+<!-- ============================================================== -->
+<div class="col-span-12 lg:col-span-7 xl:col-span-8 flex flex-col gap-5 bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-6 sm:p-7 shadow-[0_8px_30px_-6px_rgba(42,32,36,0.06)]">
+<!-- DETAIL HEADER -->
+<div class="flex flex-col md:flex-row md:items-center justify-between pb-5 border-b border-outline-variant/30 gap-4">
+<!-- Customer Identity -->
+<div class="flex items-center gap-3.5">
+<div class="w-13 h-13 rounded-2xl bg-secondary-container text-primary font-headline-sm font-semibold flex items-center justify-center p-3 border border-outline-variant/30 text-xl shadow-xs">
+                מ
+              </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2.5 flex-wrap">
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">מאיה דהן</h2>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-xs" data-icon="medical_services">medical_services</span>
+                    שאלה רפואית
+                  </span>
+</div>
+<div class="flex items-center gap-3 text-secondary font-label-md text-label-md mt-1">
+<span class="font-mono" dir="ltr">050-555-0104</span>
+<span class="inline-block w-1 h-1 rounded-full bg-outline"></span>
+<span>לקוחה רשומה (3 טיפולים קודמים)</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Buttons -->
+</div>
+<!-- STATUS BARS / URGENT WARNING BANNER -->
+<div class="flex flex-wrap items-center gap-2.5 p-3 rounded-xl bg-surface-container-low border border-outline-variant/40">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-medium shadow-xs">
+<span class="w-2 h-2 rounded-full bg-rose-300 animate-pulse"></span>
+<span>ממתינה למענה אנושי</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="pause_circle">pause_circle</span>
+<span>המענה האוטומטי מושהה</span>
+</div>
+<span class="text-secondary font-label-sm text-label-sm mr-auto">
+              זמן המתנה: <strong class="text-on-surface">4 דקות</strong>
+</span>
+</div>
+<!-- AI INTELLIGENT SUMMARY CARD -->
+<div class="relative overflow-hidden rounded-xl border border-outline-variant/60 bg-gradient-to-l from-surface-container-low/90 to-surface-container-lowest p-4 sm:p-5 shadow-xs">
+<div class="flex items-center justify-between gap-2 mb-2.5">
+<div class="flex items-center gap-2 text-primary font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-base font-semibold">סיכום הפנייה ע״י הסוכנת החכמה</span>
+</div>
+</div>
+<!-- Summary Body Text -->
+<p class="font-body-md text-body-md text-on-surface mb-3.5 leading-relaxed font-medium">הלקוחה שואלת אם טיפול פנים מתאים לה עם אלרגיה לחומצות. יש לה תור ביום שני 16.11 ב-10:30.</p>
+<!-- Metadata Strip -->
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 pt-3 border-t border-dashed border-outline-variant/60 text-secondary font-label-sm text-label-sm"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm text-primary" data-icon="spa">spa</span><span>סוג טיפול: <strong class="text-on-surface">טיפול פנים (250 ₪ · 60 דק׳)</strong></span></div><span class="text-outline-variant">|</span><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm text-primary" data-icon="calendar_month">calendar_month</span><span>מועד קיים: <strong class="text-on-surface">יום שני, 16.11.2026 בשעה 10:30</strong></span></div><span class="text-outline-variant">|</span><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm text-primary" data-icon="person">person</span><span>מטפלת: <strong class="text-on-surface">בעלת המכון</strong></span></div></div>
+</div>
+<!-- CONVERSATION CONTEXT (Mini WhatsApp Bubbles) -->
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<h4 class="font-label-lg text-label-lg font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-secondary" data-icon="forum">forum</span>
+                הקשר השיחה (הודעות אחרונות)
+              </h4>
+</div>
+<div class="bg-surface-container-low/30 rounded-xl p-4 border border-outline-variant/30 flex flex-col gap-3">
+<!-- Message 1: Customer -->
+<div class="flex flex-col items-start max-w-[85%] self-start">
+<div class="flex items-center gap-1.5 mb-1 px-1">
+<span class="font-label-sm text-label-sm font-semibold text-primary">מאיה</span>
+<span class="font-label-sm text-label-sm text-outline">10:12</span>
+</div>
+<div class="bg-surface-container-lowest text-on-surface border border-outline-variant/40 px-3.5 py-2.5 rounded-2xl rounded-tr-sm shadow-xs font-body-sm text-body-sm">
+                  היי, ראיתי שיש לי תור לטיפול פנים ביום שני הקרוב
+                </div>
+</div>
+<!-- Message 2: Bot -->
+<div class="flex flex-col items-end max-w-[85%] self-end">
+<div class="flex items-center gap-1.5 mb-1 px-1">
+<span class="font-label-sm text-label-sm text-outline">10:12</span>
+<span class="font-label-sm text-label-sm font-semibold text-secondary">תור חכם (סוכנת)</span>
+</div>
+<div class="bg-secondary-container/60 text-on-surface border border-secondary-fixed-dim/40 px-3.5 py-2.5 rounded-2xl rounded-tl-sm shadow-xs font-body-sm text-body-sm">היי מאיה! נכון, תור לטיפול פנים ביום שני ב-10:30 🌸</div>
+</div>
+<!-- Message 3: Customer (The query trigger) -->
+<div class="flex flex-col items-start max-w-[85%] self-start">
+<div class="flex items-center gap-1.5 mb-1 px-1">
+<span class="font-label-sm text-label-sm font-semibold text-primary">מאיה</span>
+<span class="font-label-sm text-label-sm text-outline">10:14</span>
+</div>
+<div class="bg-surface-container-lowest text-on-surface border-2 border-primary-container/30 px-3.5 py-2.5 rounded-2xl rounded-tr-sm shadow-xs font-body-sm text-body-sm font-medium">
+                  יש לי אלרגיה קלה לחומצות פירות (AHA/BHA), זה מתאים או שצריך להחליף חומרים?
+                </div>
+</div>
+<!-- Message 4: Bot handover confirmation -->
+<div class="flex flex-col items-end max-w-[85%] self-end">
+<div class="flex items-center gap-1.5 mb-1 px-1">
+<span class="font-label-sm text-label-sm text-outline">10:14</span>
+<span class="font-label-sm text-label-sm font-semibold text-secondary">תור חכם (סוכנת)</span>
+</div>
+<div class="bg-surface-container-high/80 text-on-surface-variant border border-outline-variant/40 px-3.5 py-2.5 rounded-2xl rounded-tl-sm shadow-xs font-body-sm text-body-sm">זו שאלה רפואית, ולכן העברתי אותה לבעלת המכון. היא תחזור אלייך אישית.</div>
+</div>
+</div>
+</div>
+<!-- REPLY & ACTION CONSOLE SECTION -->
+<div class="flex flex-col gap-3 pt-2">
+<label class="font-label-lg text-label-lg font-semibold text-on-surface flex items-center justify-between" for="owner-reply-field">
+<span>מענה מנהלת ישיר למאיה:</span>
+</label>
+<!-- Rich Textarea -->
+<div class="relative">
+<textarea class="w-full p-3.5 rounded-xl bg-surface-container-low/40 border border-outline-variant/60 font-body-md text-body-md text-on-surface placeholder:text-outline/80 focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all resize-none" id="owner-reply-field" placeholder="תשובה ללקוחה... (למשל: היי מאיה, בהחלט מתאים! אנחנו מתאימים תכשירים היפואלרגניים ללא חומצות במיוחד לעור רגיש, ונדאג לכך בטיפול שלך 🌸)" rows="3"></textarea>
+</div>
+<!-- Confirmation Helper Notice -->
+<div class="flex items-center gap-2 text-secondary font-label-sm text-label-sm px-1">
+<span class="material-symbols-outlined text-base text-primary" data-icon="info">info</span>
+<span>ההודעה תישלח לשיחה של מאיה והמענה האוטומטי יחזור לפעול מיידית.</span>
+</div>
+<!-- Actions Row -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-2"><div class="flex items-center gap-2.5 flex-wrap"><button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary-container text-on-primary hover:bg-primary font-label-lg text-label-lg font-medium transition-all shadow-[0_4px_12px_rgba(107,31,46,0.25)] active:scale-[0.98]"><span class="material-symbols-outlined text-lg" data-icon="send">send</span><span>שליחה וסימון כטופל</span></button><button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-outline-variant bg-surface hover:bg-surface-container text-primary font-label-lg text-label-lg font-medium transition-colors"><span class="material-symbols-outlined text-lg" data-icon="calendar_month">calendar_month</span><span>פתיחת היומן</span></button></div></div>
+<!-- Regulatory / Safety Disclaimer -->
+<div class="pt-3 border-t border-outline-variant/20 flex items-center justify-between text-secondary font-label-sm text-label-sm"><div class="flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary" data-icon="verified_user">verified_user</span><span>הסוכנת החכמה אינה מספקת ייעוץ רפואי ואינה מאשרת החזרים כספיים ללא אישור מנהלת.</span></div><span class="text-xs text-outline">מצב הדגמה פעיל</span></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
