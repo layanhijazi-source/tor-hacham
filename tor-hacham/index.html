@@ -358,7 +358,7 @@ function respondOffer(oid,cid,accept){
     o.status='accepted';o.resolved=vnow();closeOfferMsgs(o);if(w)w.status='booked';
     const b=addBooking(cid,o.svc,o.date,o.start,'waitlist');
     const others=S.bookings.filter(x=>x.custId===cid&&x.status==='confirmed'&&x.id!==b.id&&x.date>=nowKey()).length;
-    say(cid,'bot','התור נקבע ✅\n'+svc(o.svc).name+' · '+dayLabel(o.date)+' · '+fmt(o.start)+'\n'+svc(o.svc).price+' ₪'+(others?'\nההזמנה הקודמת שלך נשארה במקומה. אם תרצי לבטל אותה, אפשר לעשות זאת בנפרד.':''),menuBtns());
+    say(cid,'bot','התור נקבע ✅\n'+svc(o.svc).name+' · '+dayLabel(o.date)+' · '+fmt(o.start)+'\n'+svc(o.svc).price+' ₪'+(others?'\nההזמנה הקודמת שלך נשארה במקומה. אם תרצי לבטל אותה, אפשר לעשות זאת בנפרד.':''),[copyBtn(b)].concat(menuBtns()));
     logEv(cust(cid).name+' אישרה את המועד '+fmt(o.start)+', היומן עודכן');
   }else{
     o.status='declined';o.resolved=vnow();closeOfferMsgs(o);backToList(o);
@@ -448,7 +448,7 @@ function run(cid,a,label,mid){
       if(!isFree(date,m,sid)||custConflict(cid,date,m,sid)){say(cid,'bot','המועד כבר נתפס או חופף לתור אחר שלך. נבחר שעה אחרת?',[{l:'שעות פנויות',a:'day|'+sid+'|'+date}]);break}
       if(!commit()){say(cid,'bot','לא הצלחתי לשמור את התור בגלל תקלה, ולכן הוא לא נקבע. אפשר לנסות שוב.',[{l:'לנסות שוב',a:'ok|'+sid+'|'+date+'|'+m},{l:'שעה אחרת',a:'day|'+sid+'|'+date}]);break}
       const b=addBooking(cid,sid,date,m,'chat');logEv(cust(cid).name+' קבעה '+svc(sid).name+' '+dayLabel(date)+' '+fmt(m));
-      say(cid,'bot','התור נקבע ✅\n'+svc(sid).name+' · '+dayLabel(date)+' · '+fmt(m)+'\n'+svc(sid).price+' ₪. נשמח לראות אותך!',menuBtns());break}
+      say(cid,'bot','התור נקבע ✅\n'+svc(sid).name+' · '+dayLabel(date)+' · '+fmt(m)+'\n'+svc(sid).price+' ₪. נשמח לראות אותך!',[copyBtn(b)].concat(menuBtns()));break}
     case 'mine':{const bs=S.bookings.filter(b=>b.custId===cid&&b.status==='confirmed'&&startMs(b.date,b.start)>vnow()).sort((a,b)=>startMs(a.date,a.start)-startMs(b.date,b.start));
       const ws=S.waitlist.filter(w=>w.custId===cid&&(w.status==='waiting'||w.status==='offered'));
       say(cid,'bot',(bs.length?'התורים שלך:\n'+bs.map(b=>'• '+svc(b.svc).name+' · '+dayLabel(b.date)+' · '+fmt(b.start)).join('\n'):'אין לך תורים עתידיים.')+(ws.length?'\n\nברשימת המתנה: '+ws.map(wlDesc).join(', '):''),menuBtns());break}
@@ -503,6 +503,17 @@ function pendingOffers(cid){return S.offers.filter(o=>o.status==='pending'&&(!ci
 /* customer side panel: hourglass + live countdown for the slot held for this waitlist entry */
 function offerChip(w){const o=S.offers.find(x=>x.wlId===w.id&&x.status==='pending');
   return o?`<span class="hg" aria-hidden="true">⏳</span>הוצע מועד · <b data-exp="${o.expiresAt}">${cd(o.expiresAt-vnow())}</b>`:'הוצע מועד'}
+/* "copy booking details" on a booking confirmation: service, date and time. Copying changes no state, so it stays clickable */
+function copyBtn(b){return {l:'העתקת פרטי התור',a:'copy|'+b.id}}
+function bookingText(b){const d=dof(b.date);return svc(b.svc).name+' · יום '+DAYS[d.getDay()]+' '+d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear()+' · '+fmt(b.start)}
+function copyBooking(bid){
+  const b=S.bookings.find(x=>x.id===bid);
+  if(!b||b.custId!==S.cur){toast('אי אפשר להעתיק תור של לקוחה אחרת');return}
+  const t=bookingText(b),ok=()=>toast('פרטי התור הועתקו: '+t);
+  const fallback=()=>{const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+    let done=false;try{done=document.execCommand('copy')}catch(e){}ta.remove();done?ok():toast('לא הצלחתי להעתיק. אלה פרטי התור: '+t)};
+  if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(t).then(ok,fallback);else fallback();
+}
 function toast(t){const e=document.createElement('div');e.className='toast';e.textContent=t;$('#toasts').appendChild(e);setTimeout(()=>e.remove(),3200)}
 function render(){
   const app=$('#app');
@@ -529,7 +540,7 @@ function customerView(){
     if(m.from==='sys')return `<div class="sys">${esc(m.text)}</div>`;
     const pop=m.id>ui.animFrom?' pop':'';
     let extra='';if(m.oid){const o=S.offers.find(x=>x.id===m.oid);if(o&&o.status==='pending')extra=`<div class="cd"><span class="hg" aria-hidden="true">⏳</span>נשמר עבורך עוד <b data-exp="${o.expiresAt}">${cd(o.expiresAt-vnow())}</b></div>`}
-    const btns=m.btns?`<div class="opts">${m.btns.map(b=>`<button class="opt" data-do="act" data-a="${esc(b.a)}" data-l="${esc(b.l)}" data-m="${m.id}" ${m.used?'disabled':''}>${esc(b.l)}</button>`).join('')}</div>`:'';
+    const btns=m.btns?`<div class="opts">${m.btns.map(b=>`<button class="opt" data-do="act" data-a="${esc(b.a)}" data-l="${esc(b.l)}" data-m="${m.id}" ${m.used&&!b.a.startsWith('copy|')?'disabled':''}>${esc(b.l)}</button>`).join('')}</div>`:'';
     const who=m.from==='bot'?'סוכנת תור חכם':m.from==='owner'?'בעלת המכון':'';
     return `<div class="m ${m.from}${pop}">${who?'<span class="who">'+who+'</span>':''}${esc(m.text||'').replace(/\n/g,'<br>')}${extra}${btns}<small>${m.t||''}</small></div>`}).join('');
   const mine=S.bookings.filter(b=>b.custId===S.cur&&b.status==='confirmed').sort((a,b)=>startMs(a.date,a.start)-startMs(b.date,b.start));
@@ -688,7 +699,7 @@ document.addEventListener('click',e=>{
     case 'cust':S.cur=d.id;break;
     case 'bookfrom':S.mode='customer';run(S.cur,'svc|'+d.v,svc(d.v).name);return;
     case 'tab':S.tab=d.v;break;
-    case 'act':run(S.cur,d.a,d.l,+d.m);return;
+    case 'act':if(d.a.startsWith('copy|')){copyBooking(d.a.slice(5));return}run(S.cur,d.a,d.l,+d.m);return;
     case 'day':{const days=openDays(14);if(!days.includes(S.adminDay))days.push(S.adminDay);days.sort();const n=days[+d.v];if(n)S.adminDay=n;break}
     case 'ocxask':ui.confirm=d.id;break;
     case 'ocxno':ui.confirm=null;break;
