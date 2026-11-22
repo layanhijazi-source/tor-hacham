@@ -77,6 +77,10 @@ h1,h2,h3{font-family:var(--font-d);color:var(--burg);margin:0;text-wrap:balance;
 .opt[disabled]{opacity:.4;cursor:default;border-color:var(--line);color:var(--muted)}
 .cd{margin-top:8px;font-size:13px;color:var(--burg);background:var(--rose-soft);border-radius:10px;padding:4px 10px;display:inline-block}
 .cd b{font-variant-numeric:tabular-nums}
+/* hourglass shown to the customer while a freed slot is held for her */
+.hg{display:inline-block;margin-inline-end:4px;animation:hgflip 2s ease-in-out infinite}
+@keyframes hgflip{0%,70%{transform:rotate(0)}85%,100%{transform:rotate(180deg)}}
+@media (prefers-reduced-motion:reduce){.hg{animation:none}}
 .quick{display:flex;gap:6px;overflow-x:auto;padding:8px 12px;background:var(--beige);scrollbar-width:none}
 .quick .opt{white-space:nowrap;background:var(--white)}
 .composer{display:flex;gap:8px;padding:10px 12px;background:var(--beige)}
@@ -496,6 +500,9 @@ function run(cid,a,label,mid){
 
 /* ---------- rendering ---------- */
 function pendingOffers(cid){return S.offers.filter(o=>o.status==='pending'&&(!cid||o.custId===cid))}
+/* customer side panel: hourglass + live countdown for the slot held for this waitlist entry */
+function offerChip(w){const o=S.offers.find(x=>x.wlId===w.id&&x.status==='pending');
+  return o?`<span class="hg" aria-hidden="true">⏳</span>הוצע מועד · <b data-exp="${o.expiresAt}">${cd(o.expiresAt-vnow())}</b>`:'הוצע מועד'}
 function toast(t){const e=document.createElement('div');e.className='toast';e.textContent=t;$('#toasts').appendChild(e);setTimeout(()=>e.remove(),3200)}
 function render(){
   const app=$('#app');
@@ -521,7 +528,7 @@ function customerView(){
   const msgs=th.map(m=>{
     if(m.from==='sys')return `<div class="sys">${esc(m.text)}</div>`;
     const pop=m.id>ui.animFrom?' pop':'';
-    let extra='';if(m.oid){const o=S.offers.find(x=>x.id===m.oid);if(o&&o.status==='pending')extra=`<div class="cd">נשמר עבורך עוד <b data-exp="${o.expiresAt}">${cd(o.expiresAt-vnow())}</b></div>`}
+    let extra='';if(m.oid){const o=S.offers.find(x=>x.id===m.oid);if(o&&o.status==='pending')extra=`<div class="cd"><span class="hg" aria-hidden="true">⏳</span>נשמר עבורך עוד <b data-exp="${o.expiresAt}">${cd(o.expiresAt-vnow())}</b></div>`}
     const btns=m.btns?`<div class="opts">${m.btns.map(b=>`<button class="opt" data-do="act" data-a="${esc(b.a)}" data-l="${esc(b.l)}" data-m="${m.id}" ${m.used?'disabled':''}>${esc(b.l)}</button>`).join('')}</div>`:'';
     const who=m.from==='bot'?'סוכנת תור חכם':m.from==='owner'?'בעלת המכון':'';
     return `<div class="m ${m.from}${pop}">${who?'<span class="who">'+who+'</span>':''}${esc(m.text||'').replace(/\n/g,'<br>')}${extra}${btns}<small>${m.t||''}</small></div>`}).join('');
@@ -538,7 +545,7 @@ function customerView(){
    <aside class="side grid">
      <div class="card"><h3>התורים של ${esc(first(cust(S.cur).name))}</h3>
        ${mine.length?mine.map(b=>`<div class="li"><div><b>${svc(b.svc).name}</b><div class="note">${dayLabel(b.date)} · ${fmt(b.start)}${b.source==='waitlist'?' · מרשימת המתנה':''}</div></div><span class="chip ok">${svc(b.svc).price} ₪</span></div>`).join(''):'<p class="muted">אין תורים קרובים.</p>'}
-       ${wl.length?'<h3 style="font-size:16px;margin-top:14px">ברשימת המתנה</h3>'+wl.map(w=>`<div class="li"><span>${esc(wlDesc(w))}</span><span><span class="chip ${w.status==='offered'?'rose':'soft'}">${w.status==='offered'?'הוצע מועד':'ממתינה'}</span> <button class="btn ghost sm" data-do="act" data-a="wlx|${w.id}" data-l="יציאה מרשימת ההמתנה" data-m="0">יציאה</button></span></div>`).join(''):''}
+       ${wl.length?'<h3 style="font-size:16px;margin-top:14px">ברשימת המתנה</h3>'+wl.map(w=>`<div class="li"><span>${esc(wlDesc(w))}</span><span><span class="chip ${w.status==='offered'?'rose':'soft'}">${w.status==='offered'?offerChip(w):'ממתינה'}</span> <button class="btn ghost sm" data-do="act" data-a="wlx|${w.id}" data-l="יציאה מרשימת ההמתנה" data-m="0">יציאה</button></span></div>`).join(''):''}
      </div>
      <div class="card plain"><h3 style="font-size:18px">פרטיות</h3><p class="note" style="margin:6px 0 0">כל לקוחה רואה ופועלת רק בחשבון שלה. בעלת המכון רואה את כולן בממשק הניהול. נשמרים שם, טלפון, תורים, רשימת המתנה ותוכן השיחה, רק בדפדפן הזה. לא נאסף מידע רפואי.</p>
        <button class="btn ghost sm" style="margin-top:10px" data-do="act" data-a="del" data-l="מחיקת החשבון שלי" data-m="0">מחיקת החשבון שלי</button></div>
