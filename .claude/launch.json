@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "tor-hacham",
-      "runtimeExecutable": "powershell",
-      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\dell\\AppData\\Local\\Temp\\claude\\74ce89730f91d823\\e55c8bb8-d445-4f75-8491-57fca6ff913a\\scratchpad\\serve.ps1", "C:\\Users\\dell\\Downloads\\נתונים\\tor-hacham"],
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "tor-hacham"],
       "port": 8765
     }
   ]
